@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author amersel
+ * @author jxw5883
  */
 public class PresidioFXML extends Application {
     

@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -53,6 +52,9 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Login Failed!");
     }
     
+    /*
+     * Creates the new scene and stage for the menuUI.
+     */
     private void setupMenuUI(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));
@@ -62,7 +64,7 @@ public class FXMLDocumentController implements Initializable {
             stage.setTitle("MenuUI");
             stage.setScene(scene);
             stage.show();
-        } catch (IOException ex) {
+        } catch (IOException ex) { 
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

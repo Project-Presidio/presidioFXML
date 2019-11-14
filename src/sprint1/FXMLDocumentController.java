@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presidiofxml;
+package sprint1;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +57,9 @@ public class FXMLDocumentController implements Initializable {
      */
     private void setupMenuUI(){
         try {
+            
             Parent root = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));
+            
             Scene scene = new Scene(root);
             
             Stage stage = new Stage();

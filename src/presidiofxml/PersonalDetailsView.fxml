@@ -9,26 +9,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presidiofxml.PersonalDetailsViewController">
    <children>
       <Text fill="RED" fontSmoothingType="LCD" layoutX="14.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the following information" wrappingWidth="300.9322509765625" />
-      <TextArea layoutX="9.0" layoutY="338.0" prefHeight="175.0" prefWidth="317.0" promptText="Enter Name" />
-      <TextField layoutX="11.0" layoutY="61.0" promptText="Enter Name" />
+      <TextArea fx:id="disability" layoutX="9.0" layoutY="338.0" opacity="0.0" prefHeight="175.0" prefWidth="317.0" promptText="Enter Disabilities Here" />
+      <TextField fx:id="textField" layoutX="11.0" layoutY="61.0" promptText="Enter Name" />
       <Text layoutX="10.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
       <Text layoutX="12.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate" />
-      <DatePicker layoutX="11.0" layoutY="135.0" prefHeight="40.0" prefWidth="157.0" promptText="10/27/2000" />
+      <DatePicker fx:id="date" layoutX="11.0" layoutY="135.0" prefHeight="40.0" prefWidth="157.0" promptText="10/27/2000" />
       <Text layoutX="8.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any pre-existing disabilities?" />
       <ToolBar layoutX="10.0" layoutY="287.0" prefHeight="40.0" prefWidth="131.0">
         <items>
-            <RadioButton mnemonicParsing="false" text="Yes" />
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="39.0" text="No" />
+            <RadioButton fx:id="yes" mnemonicParsing="false" onAction="#onYes" text="Yes" />
+            <RadioButton fx:id="no" mnemonicParsing="false" prefHeight="17.0" prefWidth="39.0" text="No" />
         </items>
       </ToolBar>
-      <Button layoutX="258.0" layoutY="527.0" mnemonicParsing="false" text="Continue" textFill="#3103ff" />
+      <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" textFill="#3103ff" />
       <ToolBar layoutX="9.0" layoutY="214.0" prefHeight="40.0" prefWidth="131.0">
          <items>
-            <RadioButton mnemonicParsing="false" text="Male" />
-            <RadioButton mnemonicParsing="false" text="Female" />
+            <RadioButton fx:id="male" mnemonicParsing="false" text="Male" />
+            <RadioButton fx:id="female" mnemonicParsing="false" text="Female" />
          </items>
       </ToolBar>
       <Text layoutX="10.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" />

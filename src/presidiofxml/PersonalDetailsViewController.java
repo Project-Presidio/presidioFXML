@@ -102,8 +102,12 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
+                        
+                        if(no.isSelected()){
+                            disability.setText("");
+                        }
+                        
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
-                        System.out.println(civilian.getPreexistingDisability());
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
                         Parent root = fxmlLoader.load();

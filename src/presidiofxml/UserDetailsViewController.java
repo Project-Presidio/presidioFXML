@@ -6,12 +6,18 @@
 package presidiofxml;
 
 import Model.Civilian;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -40,12 +46,20 @@ public class UserDetailsViewController implements Initializable {
         userInfo.setText(civilian.generateReport());
     }
     @FXML
-    private void updateUser(ActionEvent event) {
+    private void updateUser(ActionEvent event) throws IOException {
         //old scene with civilian object passed
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
+        PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
+        
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
     @FXML
     private void deleteUser(ActionEvent event) {
-        civilian = null;
+        setCivilian(null);
         //old scene civilian object passed
     }
     
@@ -53,5 +67,12 @@ public class UserDetailsViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    /**
+     * @param civilian the civilian to set
+     */
+    public void setCivilian(Civilian civilian) {
+        this.civilian = civilian;
+    }
     
 }

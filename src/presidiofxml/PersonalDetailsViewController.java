@@ -5,8 +5,10 @@
  */
 package presidiofxml;
 
+import Model.Civilian;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +47,8 @@ public class PersonalDetailsViewController implements Initializable {
     private RadioButton male;
     @FXML
     private RadioButton female;
+    
+    private Civilian civilian;
 
     // private void onButtonClicked() {
     //}
@@ -76,7 +80,8 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
-                        Civilian civilian = new Civilian()
+                        civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText());
+                        
                     }
                 }
             }

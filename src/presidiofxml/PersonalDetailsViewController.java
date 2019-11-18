@@ -66,7 +66,7 @@ public class PersonalDetailsViewController implements Initializable {
     }
       
     @FXML
-    private void onSubmit(ActionEvent event) {
+    private void onSubmit(ActionEvent event) throws IOException {
         String name = textField.getText();
         if (name == null) {
             System.out.println("No Name inputted");
@@ -86,18 +86,14 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
-                        civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
+                        civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        try {
-                            Parent root = FXMLLoader.load(getClass().getResource("UserDetailsView.fxml"));
-                            Scene scene = new Scene(root);
-                            
-                            existingStage.setScene(scene);
-                            existingStage.show();
-                            
-                        } catch (IOException ex) {
-                            Logger.getLogger(PersonalDetailsViewController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        System.out.println("reached here");
+                        Parent root = FXMLLoader.load(getClass().getResource("UserDetailsView.fxml"));
+                        System.out.println("made it here");
+                        Scene scene = new Scene(root);
+                        existingStage.setScene(scene);
+                        existingStage.show();
                     }
                 }
             }

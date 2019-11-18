@@ -23,6 +23,10 @@ public class UserDetailsViewController implements Initializable {
     private Civilian civilian;
     private Text userInfo;
     
+    public UserDetailsViewController(){
+        
+    }
+    
     public UserDetailsViewController(Civilian civilian){
         this.civilian = civilian;
     }

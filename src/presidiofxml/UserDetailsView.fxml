@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="355.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="presidiofxml.UsersDetailsViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="355.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="presidiofxml.UserDetailsViewController">
    <children>
       <Button fx:id="update" layoutX="28.0" layoutY="23.0" mnemonicParsing="false" onAction="#updateUser" text="Update" />
       <Button fx:id="delete" layoutX="147.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete" />

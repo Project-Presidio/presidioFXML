@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -76,6 +77,8 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("all prompts answered");
                         civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
                         UserDetailsViewController cntl = new UserDetailsViewController(civilian);
+                        //new scene
+                        
                     }
                 }
             }
@@ -85,7 +88,8 @@ public class PersonalDetailsViewController implements Initializable {
     private void onYes(ActionEvent event) {
         disability.setOpacity(1);
     }
-
+   
+   
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {

@@ -42,7 +42,6 @@ public class PersonalDetailsViewController implements Initializable {
     private RadioButton yes;
     @FXML
     private RadioButton no;
-    //@FXML private Button continue;
     @FXML
     private RadioButton male;
     @FXML
@@ -54,7 +53,6 @@ public class PersonalDetailsViewController implements Initializable {
     //}
     @FXML
     private void onSubmit(ActionEvent event) {
-        System.out.println("in handleactionbutton method");
         String name = textField.getText();
         if (name == null) {
             System.out.println("No Name inputted");
@@ -71,9 +69,6 @@ public class PersonalDetailsViewController implements Initializable {
                 } else if ((male.isSelected()) && (female.isSelected())) {
                     System.out.println("Please only select the 'male' or 'female' option");
                 } else {
-                    if (male.isSelected()) {
-                        System.out.println("male");
-                    }
                     if ((!yes.isSelected()) && (!no.isSelected())) {
                         System.out.println("Please answer the disability prompt");
                     } else if ((yes.isSelected()) && (no.isSelected())) {
@@ -89,7 +84,6 @@ public class PersonalDetailsViewController implements Initializable {
     }
     @FXML
     private void onYes(ActionEvent event) {
-        System.out.println("YAS");
         disability.setOpacity(1);
     }
 

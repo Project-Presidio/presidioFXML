@@ -88,9 +88,10 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("all prompts answered");
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        System.out.println("reached here");
-                        Parent root = FXMLLoader.load(getClass().getResource("UserDetailsView.fxml"));
-                        System.out.println("made it here");
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
+                        UserDetailsViewController controller = fxmlLoader.<UserDetailsViewController>getController();
+                        Parent root = fxmlLoader.load();
+                        controller.setCivilian(civilian);
                         Scene scene = new Scene(root);
                         existingStage.setScene(scene);
                         existingStage.show();

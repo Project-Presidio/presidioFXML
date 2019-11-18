@@ -6,18 +6,26 @@
 package presidiofxml;
 
 import Model.Civilian;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -75,7 +83,17 @@ public class PersonalDetailsViewController implements Initializable {
                     } else {
                         System.out.println("all prompts answered");
                         civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
-                        UserDetailsViewController cntl = new UserDetailsViewController(civilian);
+                        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getResource("UserDetailsView.fxml"));
+                            Scene scene = new Scene(root);
+                            
+                            existingStage.setScene(scene);
+                            existingStage.show();
+                            
+                        } catch (IOException ex) {
+                            Logger.getLogger(PersonalDetailsViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             }

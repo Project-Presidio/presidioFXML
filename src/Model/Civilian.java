@@ -6,7 +6,7 @@
 package Model;
 
 import com.google.gson.Gson;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,7 +15,7 @@ import java.util.Date;
 public class Civilian implements Reportable {
 
     private final String fullname;
-    private final Date birthday;
+    private final LocalDate birthday;
     private final boolean sex;
     private final double weight;
     private final double height;
@@ -30,7 +30,7 @@ public class Civilian implements Reportable {
      * @param height
      * @param preexistingDisability
      */
-    public Civilian(String fullname, Date birthday, boolean sex, double weight, double height, String preexistingDisability) {
+    public Civilian(String fullname, LocalDate birthday, boolean sex, double weight, double height, String preexistingDisability) {
         this.fullname = fullname;
         this.birthday = birthday;
         this.sex = sex;
@@ -49,7 +49,7 @@ public class Civilian implements Reportable {
     /**
      * @return the birthday
      */
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 

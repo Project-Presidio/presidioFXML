@@ -56,8 +56,12 @@ public class PersonalDetailsViewController implements Initializable {
     private RadioButton female;
     
     private Civilian civilian;
+    
+    public PersonalDetailsViewController(){
+        
+    }
 
-      public PersonalDetailsViewController(Civilian c) {
+    public PersonalDetailsViewController(Civilian c) {
          this.civilian=c;
     }
       

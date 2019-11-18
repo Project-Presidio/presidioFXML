@@ -53,9 +53,10 @@ public class UserDetailsViewController implements Initializable {
         //old scene with civilian object passed
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
-        PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
-        
         Parent root = fxmlLoader.load();
+        PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
+        controller.load(civilian);
+        
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();
@@ -65,9 +66,7 @@ public class UserDetailsViewController implements Initializable {
     private void deleteUser(ActionEvent event) throws IOException {
         civilian = null;
         Stage existingStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        System.out.println("reached here");
         Parent root = FXMLLoader.load(getClass().getResource("PersonalDetailsView.fxml"));
-        System.out.println("made it here");
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();

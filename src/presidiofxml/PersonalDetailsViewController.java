@@ -61,8 +61,24 @@ public class PersonalDetailsViewController implements Initializable {
         
     }
 
-    public PersonalDetailsViewController(Civilian c) {
-         this.civilian=c;
+    /**
+     * Loads a Civilian to be edited
+     * @param civilian the civilian to set
+     */
+    public void load(Civilian civilian) {
+        this.civilian = civilian;
+        textField.setText(civilian.getFullname());
+        date.setValue(civilian.getBirthday());
+        if(civilian.isSex())
+            female.fire();
+        else
+            male.fire();
+        if(!civilian.getBirthday().equals("")){
+            yes.fire();
+            disability.setText(civilian.getPreexistingDisability());
+        }
+        else
+            no.fire();
     }
       
     @FXML
@@ -91,7 +107,6 @@ public class PersonalDetailsViewController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
                         Parent root = fxmlLoader.load();
                         UserDetailsViewController controller = fxmlLoader.<UserDetailsViewController>getController();
-                        System.out.println(controller);
                         controller.setCivilian(civilian);
                         Scene scene = new Scene(root);
                         existingStage.setScene(scene);
@@ -111,5 +126,7 @@ public class PersonalDetailsViewController implements Initializable {
     ) {
         // TODO
     }
+
+    
 
 }

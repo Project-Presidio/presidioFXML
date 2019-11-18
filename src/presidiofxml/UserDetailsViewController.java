@@ -47,6 +47,7 @@ public class UserDetailsViewController implements Initializable {
         // System.out.println(civilian.generateReport());
         output.setText(civilian.generateReport());
     }
+
     @FXML
     private void updateUser(ActionEvent event) throws IOException {
         //old scene with civilian object passed
@@ -59,9 +60,17 @@ public class UserDetailsViewController implements Initializable {
         existingStage.setScene(scene);
         existingStage.show();
     }
+
     @FXML
-    private void deleteUser(ActionEvent event) {
-        setCivilian(null);
+    private void deleteUser(ActionEvent event) throws IOException {
+        civilian = null;
+        Stage existingStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        System.out.println("reached here");
+        Parent root = FXMLLoader.load(getClass().getResource("PersonalDetailsView.fxml"));
+        System.out.println("made it here");
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
         //old scene civilian object passed
     }
 

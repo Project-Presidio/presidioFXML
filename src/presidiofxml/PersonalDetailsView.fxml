@@ -18,17 +18,17 @@
       <Text layoutX="12.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate" />
       <DatePicker fx:id="date" layoutX="11.0" layoutY="135.0" prefHeight="40.0" prefWidth="157.0" promptText="10/27/2000" />
       <Text layoutX="8.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any pre-existing disabilities?" />
-      <ToolBar layoutX="10.0" layoutY="287.0" prefHeight="40.0" prefWidth="131.0">
+      <ToolBar layoutX="10.0" layoutY="287.0" prefHeight="40.0" prefWidth="157.0">
         <items>
             <RadioButton fx:id="yes" mnemonicParsing="false" onAction="#onYes" text="Yes" />
-            <RadioButton fx:id="no" mnemonicParsing="false" prefHeight="17.0" prefWidth="39.0" text="No" />
+            <RadioButton fx:id="no" mnemonicParsing="false" onAction="#onNo" prefHeight="18.0" prefWidth="60.0" text="No" />
         </items>
       </ToolBar>
       <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" textFill="#3103ff" />
-      <ToolBar layoutX="9.0" layoutY="214.0" prefHeight="40.0" prefWidth="131.0">
+      <ToolBar layoutX="9.0" layoutY="214.0" prefHeight="40.0" prefWidth="157.0">
          <items>
-            <RadioButton fx:id="male" mnemonicParsing="false" text="Male" />
-            <RadioButton fx:id="female" mnemonicParsing="false" text="Female" />
+            <RadioButton fx:id="male" mnemonicParsing="false" onAction="#onMale" text="Male" />
+            <RadioButton fx:id="female" mnemonicParsing="false" onAction="#onFemale" text="Female" />
          </items>
       </ToolBar>
       <Text layoutX="10.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" />

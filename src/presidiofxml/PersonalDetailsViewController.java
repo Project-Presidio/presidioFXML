@@ -120,6 +120,30 @@ public class PersonalDetailsViewController implements Initializable {
     @FXML
     private void onYes(ActionEvent event) {
         disability.setOpacity(1);
+        if(no.isSelected()){
+            no.setSelected(false);
+        }
+    }
+    @FXML
+    private void onNo(ActionEvent event){
+        if(yes.isSelected()){
+            yes.setSelected(false);
+            disability.setOpacity(0);
+        }
+    }
+    
+    @FXML
+    private void onMale(ActionEvent event){
+        if(female.isSelected()){
+            female.setSelected(false);
+        }
+    }
+    
+    @FXML
+    private void onFemale(ActionEvent event){
+        if(male.isSelected()){
+            male.setSelected(false);
+        }
     }
    
     @Override

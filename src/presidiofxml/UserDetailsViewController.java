@@ -25,15 +25,16 @@ import javafx.stage.Stage;
  * @author Austin
  */
 public class UserDetailsViewController implements Initializable {
-    
+
     private Civilian civilian;
-    private Text userInfo;
-    
-    public UserDetailsViewController(){
-        
+    @FXML
+    private Text output;
+
+    public UserDetailsViewController() {
+
     }
-    
-    public UserDetailsViewController(Civilian civilian){
+
+    public UserDetailsViewController(Civilian civilian) {
         this.civilian = civilian;
     }
 
@@ -43,7 +44,8 @@ public class UserDetailsViewController implements Initializable {
     
     @FXML
     private void readUser(ActionEvent event) {
-        userInfo.setText(civilian.generateReport());
+        // System.out.println(civilian.generateReport());
+        output.setText(civilian.generateReport());
     }
     @FXML
     private void updateUser(ActionEvent event) throws IOException {
@@ -62,7 +64,7 @@ public class UserDetailsViewController implements Initializable {
         setCivilian(null);
         //old scene civilian object passed
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

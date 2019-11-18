@@ -103,7 +103,7 @@ public class PersonalDetailsViewController implements Initializable {
     private void onYes(ActionEvent event) {
         disability.setOpacity(1);
     }
-
+   
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {

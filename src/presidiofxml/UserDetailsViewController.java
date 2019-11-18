@@ -37,18 +37,13 @@ public class UserDetailsViewController implements Initializable {
     }
     @FXML
     private void updateUser(ActionEvent event) {
-        
+        //old scene with civilian object passed
     }
     @FXML
     private void deleteUser(ActionEvent event) {
         civilian = null;
+        //old scene civilian object passed
     }
-    
-    
-    
-    
-    
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

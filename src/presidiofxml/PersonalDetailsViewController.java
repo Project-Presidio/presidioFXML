@@ -76,6 +76,7 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
+                        Civilian civilian = new Civilian()
                     }
                 }
             }

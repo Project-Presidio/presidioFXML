@@ -73,12 +73,12 @@ public class PersonalDetailsViewController implements Initializable {
             female.fire();
         else
             male.fire();
-        if(!civilian.getBirthday().equals("")){
+        if(civilian.getPreexistingDisability().equals(""))
+            no.fire();
+        else {
             yes.fire();
             disability.setText(civilian.getPreexistingDisability());
         }
-        else
-            no.fire();
     }
       
     @FXML
@@ -103,6 +103,7 @@ public class PersonalDetailsViewController implements Initializable {
                     } else {
                         System.out.println("all prompts answered");
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
+                        System.out.println(civilian.getPreexistingDisability());
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
                         Parent root = fxmlLoader.load();

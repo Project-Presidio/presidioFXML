@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -40,6 +41,8 @@ public class PersonalDetailsViewController implements Initializable {
     @FXML
     private Label label;
     //  @FXML private PasswordField passField;
+    @FXML
+    private Text alert;
     @FXML
     private TextField textField;
     @FXML
@@ -85,21 +88,21 @@ public class PersonalDetailsViewController implements Initializable {
     private void onSubmit(ActionEvent event) throws IOException {
         String name = textField.getText();
         if (name == null) {
-            System.out.println("No Name inputted");
+            alert.setText("No Name inputted");
         } else {
             LocalDate userDate = date.getValue();
             if (userDate == null) {
-                System.out.println("No date was inputted");
+                alert.setText("No date was inputted");
             } else {
                 if ((!male.isSelected()) && (!female.isSelected())) {
-                    System.out.println("No gender was selected");
+                    alert.setText("No gender was selected");
                 } else if ((male.isSelected()) && (female.isSelected())) {
-                    System.out.println("Please only select the 'male' or 'female' option");
+                    alert.setText("Please only select the 'male' or 'female' option");
                 } else {
                     if ((!yes.isSelected()) && (!no.isSelected())) {
-                        System.out.println("Please answer the disability prompt");
+                        alert.setText("Please answer the disability prompt");
                     } else if ((yes.isSelected()) && (no.isSelected())) {
-                        System.out.println("Please only select one disability option");
+                        alert.setText("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
                         

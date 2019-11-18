@@ -25,7 +25,7 @@ import javafx.scene.control.TextField;
  * @author abp5300
  */
 public class PersonalDetailsViewController implements Initializable {
-
+    
     /**
      * Initializes the controller class.
      */
@@ -49,17 +49,16 @@ public class PersonalDetailsViewController implements Initializable {
     
     private Civilian civilian;
 
-    // private void onButtonClicked() {
-    //}
+      public PersonalDetailsViewController(Civilian c) {
+         this.civilian=c;
+    }
+      
     @FXML
     private void onSubmit(ActionEvent event) {
         String name = textField.getText();
         if (name == null) {
             System.out.println("No Name inputted");
         } else {
-            //Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-            //Date date = Date.from(instant);
-            //System.out.println(localDate + "\n" + instant + "\n" + date);
             LocalDate userDate = date.getValue();
             if (userDate == null) {
                 System.out.println("No date was inputted");
@@ -75,8 +74,8 @@ public class PersonalDetailsViewController implements Initializable {
                         System.out.println("Please only select one disability option");
                     } else {
                         System.out.println("all prompts answered");
-                        civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText());
-                        
+                        civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
+                        UserDetailsViewController cntl = new UserDetailsViewController(civilian);
                     }
                 }
             }

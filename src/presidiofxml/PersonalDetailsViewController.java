@@ -83,6 +83,7 @@ public class PersonalDetailsViewController implements Initializable {
                     } else {
                         System.out.println("all prompts answered");
                         civilian = new Civilian(textField.getText(), new Date(date.getValue().toEpochDay()), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
+<<<<<<< HEAD
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         try {
                             Parent root = FXMLLoader.load(getClass().getResource("UserDetailsView.fxml"));
@@ -94,6 +95,11 @@ public class PersonalDetailsViewController implements Initializable {
                         } catch (IOException ex) {
                             Logger.getLogger(PersonalDetailsViewController.class.getName()).log(Level.SEVERE, null, ex);
                         }
+=======
+                        UserDetailsViewController cntl = new UserDetailsViewController(civilian);
+                        //new scene
+                        
+>>>>>>> origin/master
                     }
                 }
             }
@@ -103,7 +109,8 @@ public class PersonalDetailsViewController implements Initializable {
     private void onYes(ActionEvent event) {
         disability.setOpacity(1);
     }
-
+   
+   
     @Override
     public void initialize(URL url, ResourceBundle rb
     ) {

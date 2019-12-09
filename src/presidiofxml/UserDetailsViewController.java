@@ -38,9 +38,7 @@ public class UserDetailsViewController implements Initializable {
         this.civilian = civilian;
     }
 
-    /**
-     * Initializes the controller class.
-     */
+    
     
     @FXML
     private void readUser(ActionEvent event) {
@@ -73,6 +71,11 @@ public class UserDetailsViewController implements Initializable {
         //old scene civilian object passed
     }
 
+    /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -30,11 +30,20 @@ public class MenuUIController implements Initializable {
     @FXML
     private void goToAlertView(){
         System.out.println("Hit Alert Button.");
+        
     }
     
     @FXML
-    private void goToArticlesView(){
+    private void goToArticlesView(ActionEvent event) throws IOException{
         System.out.println("Hit Articles View Button.");
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleMenuView.fxml"));
+        Parent root = fxmlLoader.load();
+        //UserDetailsViewController controller = fxmlLoader.<UserDetailsViewController>getController();
+        //controller.setCivilian(civilian);
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
     
     @FXML
@@ -44,7 +53,6 @@ public class MenuUIController implements Initializable {
     
     @FXML
     private void goToUserDetailsView(ActionEvent event) throws IOException{
-        System.out.println("Hit User Details View Button.");
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
         Parent root = fxmlLoader.load();

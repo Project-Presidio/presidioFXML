@@ -6,18 +6,23 @@
 package presidiofxml;
 
 import Model.Article;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -67,16 +72,39 @@ public class ArticleMenuViewController implements Initializable {
     @FXML
     public void search(){
         String searchWord = searchField.getText();
-//        for(Article a: listItems){
-//            if(a.getTitle().equals(searchWord)){
-//                //limit the items in listItems
-//            }
-//        }
+        for(String title: listItems){
+            if(title.equals(searchWord)){
+                //limit the items in listItems
+            }
+        }
     }
     
+    /**
+     * Obtains the selected item in the ItemList, creates an ArticleDetailsView, passes an article to it, and switches to it.
+     * @param event 
+     * @throws java.io.IOException 
+     */
     @FXML
-    public void selectItem(ActionEvent event){
+    public void selectItem(ActionEvent event) throws IOException{
+        String selectedItem = this.listView.getSelectionModel().getSelectedItem();
+        Article article = null;
+        for(Article a: this.articleList){
+            if(a.getTitle().equals(selectedItem)){
+                article = a;
+            }
+        }
         
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleDetailsView.fxml"));
+        Parent root = fxmlLoader.load();
+        
+        ArticleDetailsViewController controller = fxmlLoader.<ArticleDetailsViewController>getController();
+        controller.setArticle(article);
+        
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
+    
     
 }

@@ -60,8 +60,10 @@ public class PersonalDetailsViewController implements Initializable {
     
     private Civilian civilian;
     
-    public PersonalDetailsViewController(){
-        
+    private static final PersonalDetailsViewController INSTANCE = new PersonalDetailsViewController();
+    
+    public static PersonalDetailsViewController getInstance(){
+        return INSTANCE;
     }
 
     /**

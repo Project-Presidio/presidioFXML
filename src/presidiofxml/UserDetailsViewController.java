@@ -29,9 +29,9 @@ public class UserDetailsViewController implements Initializable {
     private Civilian civilian;
     @FXML
     private Text output;
-
-    public UserDetailsViewController() {
-
+    
+    public UserDetailsViewController(){
+    
     }
 
     public UserDetailsViewController(Civilian civilian) {

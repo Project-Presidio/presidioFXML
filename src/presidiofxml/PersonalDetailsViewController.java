@@ -9,10 +9,7 @@ import Model.Civilian;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -114,9 +111,9 @@ public class PersonalDetailsViewController implements Initializable {
                         
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
                         Parent root = fxmlLoader.load();
-                        UserDetailsViewController controller = fxmlLoader.<UserDetailsViewController>getController();
+                        MenuUIController controller = fxmlLoader.<MenuUIController>getController();
                         controller.setCivilian(civilian);
                         Scene scene = new Scene(root);
                         existingStage.setScene(scene);

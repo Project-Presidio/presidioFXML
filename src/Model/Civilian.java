@@ -21,6 +21,7 @@ public class Civilian implements Reportable {
     private final double weight;
     private final double height;
     private final String preexistingDisability;
+    private final CoordinateLocation location;
 
     /**
      *
@@ -31,13 +32,14 @@ public class Civilian implements Reportable {
      * @param height
      * @param preexistingDisability
      */
-    public Civilian(String fullname, LocalDate birthday, boolean sex, double weight, double height, String preexistingDisability) {
+    public Civilian(String fullname, LocalDate birthday, boolean sex, double weight, double height, String preexistingDisability, CoordinateLocation location) {
         this.fullname = fullname;
         this.birthday = birthday;
         this.sex = sex;
         this.weight = weight;
         this.height = height;
         this.preexistingDisability = preexistingDisability;
+        this.location = location;
     }
 
     /**

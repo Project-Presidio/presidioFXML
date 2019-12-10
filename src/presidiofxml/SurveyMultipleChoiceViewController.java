@@ -8,7 +8,6 @@ package presidiofxml;
 import Model.QuestionList;
 import Model.Question;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -97,6 +96,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             if(radioButtons[selected].isSelected())
                 break;
         }
+        
         int nextQuestionNum = 0;
         switch(selected){
             case 0: nextQuestionNum = currentQuestion.getRedirect().get("a"); break;
@@ -107,7 +107,11 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             case 5: nextQuestionNum = currentQuestion.getRedirect().get("f"); break;
             default: System.err.println("An invalid question redirect was selected!");
         }
-        currentQuestion = this.questionList.getQuestion(nextQuestionNum);
+        System.out.println(nextQuestionNum);
+        if(nextQuestionNum >= 0)
+            currentQuestion = this.questionList.getQuestion(nextQuestionNum);
+        else
+            return;
         
         this.questionNumber++;
         updateView();

@@ -10,6 +10,7 @@ package Model;
  * @author jxw5883
  */
 public class Article {
+    private int id;
     private final String title;
     private final String content;
 
@@ -39,5 +40,12 @@ public class Article {
     @Override
     public String toString(){
         return this.getTitle();
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 }

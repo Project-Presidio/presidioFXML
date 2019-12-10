@@ -52,16 +52,16 @@ public class QuestionList {
     */
     
     
-    private final HashMap<String, Question_> questionList;
+    private final HashMap<String, Question> questionList;
 
-    public QuestionList(HashMap<String,Question_> questionList){
+    public QuestionList(HashMap<String,Question> questionList){
         this.questionList = questionList;
     }
     
     /**
      * @return the questionList
      */
-    public HashMap<String, Question_> getQuestionList() {
+    public HashMap<String, Question> getQuestionList() {
         return questionList;
     }
     
@@ -73,11 +73,11 @@ public class QuestionList {
     public static QuestionList importJSON(String rawJson){
         JsonObject json = (JsonObject) JsonParser.parseString(rawJson);
         
-        HashMap<String, Question_> questionList = new HashMap();
+        HashMap<String, Question> questionList = new HashMap();
         
         json.keySet().forEach((key) -> {
             JsonObject individualQuestion = json.get(key).getAsJsonObject();
-            Question_ question = Question_.importFromJSON(individualQuestion);
+            Question question = Question.importFromJSON(individualQuestion);
             questionList.put(key, question);
         });
         
@@ -95,4 +95,7 @@ public class QuestionList {
         return gson.toJson(this);
     }
     
+    public Question getQuestion(int questionId){
+        return this.questionList.get(Integer.toString(questionId));
+    }
 }

@@ -1,65 +1,94 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Model;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.util.HashMap;
 
+/**
+ *
+ * @author jxw5883
+ */
 public class Question {
     
-    private String questionType;
-    private String question;
-    private ArrayList promptList;
+//JSON Format
+/*
+{
+  "question": {
+    "id": 0,
+    "title": "What best describes your current situation?",
+    "response": {
+      "a": "Seismic",
+      "b": "Flood",
+      "c": "Inclement Weather",
+      "d": "Emergency"
+    },
     
-    public Question(String questionTypes, String questions)
-    {
-        questionType = questionTypes;
-        question = questions;
+    "redirect":{
+      "a": 1,
+      "b": 2,
+      "c": 3,
+      "d": 4
+    }
+  }
+}
+*/
+    private int id;
+    private String title;
+    private HashMap<String, String> response;
+    private HashMap<String, Integer> redirect;
+    
+    public static Question importFromJSON(String json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Question.class);
+    }
+
+    /**
+     *
+     * @param json
+     * @return
+     */
+    public static Question importFromJSON(JsonObject json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Question.class);
     }
     
-    public ArrayList promptList()
-    {
-        getPromptList().add(getQuestionType() + getQuestion());
-        return getPromptList();
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 
     /**
-     * @return the questionType
+     * @return the title
      */
-    public String getQuestionType() {
-        return questionType;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * @param questionType the questionType to set
+     * @return the response
      */
-    public void setQuestionType(String questionType) {
-        this.questionType = questionType;
+    public HashMap<String, String> getResponse() {
+        return response;
     }
 
     /**
-     * @return the question
+     * @return the redirect
      */
-    public String getQuestion() {
-        return question;
+    public HashMap<String, Integer> getRedirect() {
+        return redirect;
     }
-
-    /**
-     * @param question the question to set
-     */
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    /**
-     * @return the promptList
-     */
-    public ArrayList getPromptList() {
-        return promptList;
-    }
-
-    /**
-     * @param promptList the promptList to set
-     */
-    public void setPromptList(ArrayList promptList) {
-        this.promptList = promptList;
+    
+    @Override
+    public String toString(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
     
 }

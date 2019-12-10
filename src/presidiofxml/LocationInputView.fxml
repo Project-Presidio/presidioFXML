@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="335.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="presidiofxml.LocationInputViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presidiofxml.LocationInputViewController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="335.0">
          <items>
@@ -25,7 +24,7 @@
       <TextField fx:id="searchField" layoutX="10.0" layoutY="89.0" prefHeight="28.0" prefWidth="245.0" />
       <Label layoutX="15.0" layoutY="71.0" text="Search Location" />
       <Button layoutX="261.0" layoutY="89.0" mnemonicParsing="false" onAction="#search" text="Search" />
-      <WebView fx:id="mapView" layoutX="12.0" layoutY="129.0" prefHeight="420.0" prefWidth="316.0" />
+      <WebView fx:id="mapView" layoutX="12.0" layoutY="129.0" mouseTransparent="true" prefHeight="420.0" prefWidth="316.0" />
       <Button layoutX="231.0" layoutY="558.0" mnemonicParsing="false" onAction="#submit" text="Set Location" />
    </children>
 </AnchorPane>

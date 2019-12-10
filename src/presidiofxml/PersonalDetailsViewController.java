@@ -6,6 +6,7 @@
 package presidiofxml;
 
 import Model.Civilian;
+import Model.CoordinateLocation;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -56,6 +57,7 @@ public class PersonalDetailsViewController implements Initializable {
     private RadioButton female;
     
     private Civilian civilian;
+    private CoordinateLocation civilianLocation;
     
     private static final PersonalDetailsViewController INSTANCE = new PersonalDetailsViewController();
     
@@ -109,7 +111,7 @@ public class PersonalDetailsViewController implements Initializable {
                             disability.setText("");
                         }
                         
-                        civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText()); //female is 1 boolean
+                        civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText(), civilianLocation); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
                         Parent root = fxmlLoader.load();
@@ -158,6 +160,14 @@ public class PersonalDetailsViewController implements Initializable {
         // TODO
     }
 
+    /**
+     * @param civilianLocation the civilianLocation to set
+     */
+    public void setCivilianLocation(CoordinateLocation civilianLocation) {
+        this.civilianLocation = civilianLocation;
+    }
+
+    
     
 
 }

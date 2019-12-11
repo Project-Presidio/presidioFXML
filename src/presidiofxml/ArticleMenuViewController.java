@@ -57,7 +57,7 @@ public class ArticleMenuViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        articleList.add(new Article("Title","Content")); //should be replaced with a method to obtain articles
+        articleList.add(new Article(-1, "Title","Content")); //should be replaced with a method to obtain articles
         
         
         articleList.forEach((a) -> {

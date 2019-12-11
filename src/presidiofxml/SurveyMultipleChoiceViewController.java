@@ -5,20 +5,28 @@
  */
 package presidiofxml;
 
+import Model.Article;
+import Model.ArticleList;
 import Model.QuestionList;
 import Model.Question;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -89,8 +97,13 @@ public class SurveyMultipleChoiceViewController implements Initializable {
         ((RadioButton) event.getSource()).setSelected(true);
     }
     
+    /**
+     * Moves onto the next question by determining which answer was selected and switching to question it redirects to.
+     * As specified in the JSON, if the answer redirect is a negative number, it an ArticleView.
+     * @param event 
+     */
     @FXML
-    private void moveOntoNextQuestion(){
+    private void moveOntoNextQuestion(ActionEvent event) throws IOException, InterruptedException{
         int selected;
         for(selected = 0; selected<radioButtons.length; selected++){
             if(radioButtons[selected].isSelected())
@@ -107,11 +120,35 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             case 5: nextQuestionNum = currentQuestion.getRedirect().get("f"); break;
             default: System.err.println("An invalid question redirect was selected!");
         }
-        System.out.println(nextQuestionNum);
         if(nextQuestionNum >= 0)
             currentQuestion = this.questionList.getQuestion(nextQuestionNum);
-        else
+        
+        //Tries to find an article to use, returns if it can't find one. 
+        else{
+            //Optimization potential: figure out another way to load the article list and search for a specific article.
+            ArticleList articleList = new ArticleList().generateArticles();
+            Article result = null;
+            for(Article a: articleList.getArticleList()){
+                if(a.getId() == nextQuestionNum){
+                    result = a;
+                    break;
+                }
+            }
+            if(result == null){
+                System.err.println("Article doesn't exist!");
+                return;
+            }
+            
+            Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleDetailsView.fxml"));
+            Parent root = fxmlLoader.load();
+            ArticleDetailsViewController controller = fxmlLoader.getController();
+            controller.setArticle(result);
+            Scene scene = new Scene(root);
+            existingStage.setScene(scene);
+            existingStage.show();
             return;
+        }
         
         this.questionNumber++;
         updateView();
@@ -189,4 +226,11 @@ public class SurveyMultipleChoiceViewController implements Initializable {
         
     }
     
+    /**
+     * Opens an article the app is connected to. 
+     * @param articleId 
+     */
+    private void openArticle(int articleId){
+        
+    }
 }

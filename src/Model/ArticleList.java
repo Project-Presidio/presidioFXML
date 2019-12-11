@@ -31,6 +31,7 @@ public class ArticleList {
     
     public ArticleList generateArticles(){
         //generate articles and insert them into articleList.
+        this.articleList.add(new Article(-1, "Title1", "Content1"));
         return this;
     }
 }

@@ -114,9 +114,12 @@ public class PersonalDetailsViewController implements Initializable {
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText(), civilianLocation); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
-                        Parent root = fxmlLoader.load();
-                        MenuUIController controller = fxmlLoader.<MenuUIController>getController();
+                        
+                        MenuUIController controller = MenuUIController.getInstance();
                         controller.setCivilian(civilian);
+                        fxmlLoader.setController(controller);
+                        
+                        Parent root = fxmlLoader.load();
                         Scene scene = new Scene(root);
                         existingStage.setScene(scene);
                         existingStage.show();

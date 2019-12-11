@@ -79,10 +79,19 @@ public class ArticleMenuViewController implements Initializable {
             }
         }
     }
+    /**
+     * Returns to the MenuUI, the previous window.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     public void back(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
+        //Retrieve the existing controller using the singleton pattern.
+        MenuUIController controller = MenuUIController.getInstance();
+        fxmlLoader.setController(controller);
+        
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         existingStage.setScene(scene);

@@ -25,7 +25,14 @@ import javafx.stage.Stage;
  */
 public class MenuUIController implements Initializable {
     
+    private static final MenuUIController INSTANCE = new MenuUIController();
+    
     private Civilian civilian;
+    
+    
+    public static MenuUIController getInstance(){
+        return INSTANCE;
+    }
     
     @FXML
     private void goToAlertView(){

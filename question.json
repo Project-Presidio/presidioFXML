@@ -16,13 +16,13 @@
       "d": 1
     }
   },
-    "1": {
+  "1": {
     "id": 1,
     "title": "Are you experiencing distress?",
     "response": {
       "a": "Yes, mental",
-      "b": “Yes, physical",
-      “c”: “No”
+      "b": "Yes, physical",
+      "c": "No"
     },
     
     "redirect":{
@@ -70,8 +70,8 @@
     "b": "Arm",
     "c": "Ribs",
     "d": "Knee",
-    “e”: “Hand”,
-    “f”: “Shoulder”
+    "e": "Hand",
+    "f": "Shoulder"
     },
     
     "redirect": {
@@ -79,8 +79,8 @@
     "b": -6,
     "c": -6,
     "d": -6,
-    “e”: -6,
-    “f”:  -6
+    "e": -6,
+    "f":  -6
     }
    }
    
@@ -89,8 +89,8 @@
     "title": "What is your physical distress?": {
     "a": "answer 1",
     "b": "answer 2",
-    “c”: “answer 3”,
-    “d”: “answer 4”
+    "c": "answer 3",
+    "d": "answer 4"
     },
     
     
@@ -102,3 +102,4 @@
     }
    }
 }
+    

@@ -57,7 +57,7 @@ public class ArticleMenuViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        articleList.add(new Article(-1, "Title","Content")); //should be replaced with a method to obtain articles
+        articleList.add(new Article(-1, "Content")); //should be replaced with a method to obtain articles
         
         
         articleList.forEach((a) -> {
@@ -78,6 +78,15 @@ public class ArticleMenuViewController implements Initializable {
                 //limit the items in listItems
             }
         }
+    }
+    @FXML
+    public void back(ActionEvent event) throws IOException{
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
     
     /**
@@ -106,6 +115,5 @@ public class ArticleMenuViewController implements Initializable {
         existingStage.setScene(scene);
         existingStage.show();
     }
-    
     
 }

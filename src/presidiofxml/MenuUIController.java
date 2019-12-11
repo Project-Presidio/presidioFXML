@@ -35,7 +35,6 @@ public class MenuUIController implements Initializable {
     
     @FXML
     private void goToArticlesView(ActionEvent event) throws IOException{
-        System.out.println("Hit Articles View Button.");
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleMenuView.fxml"));
         Parent root = fxmlLoader.load();

@@ -5,15 +5,25 @@
         <group>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/PersonalDetailsViewController.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/UserDetailsViewController.java</file>
-            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Guide.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/test/Model/Question_Test.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/ArticleMenuViewController.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/SurveyMultipleChoiceViewController.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/MenuUIController.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Question.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/test/Model/QuestionListTest.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/PresidioFXML.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/MenuUI.fxml</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Reportable.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/SurveyMultipleChoiceView.fxml</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Guide.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/QuestionList.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Article.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Civilian.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/SurveyMenuViewController.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Alert.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Coordinate.java</file>
             <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/test/Model/CivilianTest.java</file>
-            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/MenuUI.fxml</file>
-            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/PresidioFXML.java</file>
-            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/Model/Reportable.java</file>
+            <file>file:/home/amersel/Sync/Documents/Course%20Notes/IST%20311/presidioFXML/src/presidiofxml/LocationInputView.fxml</file>
         </group>
     </open-files>
 </project-private>

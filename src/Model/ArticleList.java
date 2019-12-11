@@ -43,7 +43,7 @@ public class ArticleList {
             if(file.isFile()){
                 try {
                     this.articleList.add(new Article(Integer.parseInt(file.getName().substring(0,file.getName().indexOf(".html")))
-                            , "", new String(Files.readAllBytes(Paths.get(file.getPath())))));
+                            , new String(Files.readAllBytes(Paths.get(file.getPath())))));
                 } catch (IOException ex) {
                     Logger.getLogger(ArticleList.class.getName()).log(Level.SEVERE, null, ex);
                 }

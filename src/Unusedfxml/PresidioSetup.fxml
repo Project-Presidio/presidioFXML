@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="335.0">
+        <items>
+          <Button fx:id="menuButton" mnemonicParsing="false" text="•••" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Setup" translateX="105.0" />
+        </items>
+      </ToolBar>
+      <TextField fx:id="firstNameTField" layoutX="11.0" layoutY="89.0" />
+      <Text layoutX="13.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+      <Text layoutX="13.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+      <TextField fx:id="lastNameTField" layoutX="11.0" layoutY="146.0" />
+      <Text layoutX="10.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday:" />
+      <DatePicker fx:id="BDayDatePicker" layoutX="10.0" layoutY="204.0" promptText="09/03/1998" />
+      <Text layoutX="10.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex:" />
+      <ToolBar layoutX="10.0" layoutY="266.0" prefHeight="40.0" prefWidth="148.0">
+         <items>
+            <RadioButton fx:id="maleRadioButton" mnemonicParsing="false" text="Male" />
+            <RadioButton fx:id="femaleRadioButton" mnemonicParsing="false" text="Female" />
+         </items>
+      </ToolBar>
+      <Text layoutX="11.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have a pre-existing condition(s)?" />
+      <ToolBar layoutX="13.0" layoutY="339.0" prefHeight="40.0" prefWidth="117.0">
+         <items>
+            <RadioButton fx:id="yesRadioButton" mnemonicParsing="false" text="Yes" />
+            <RadioButton fx:id="noRadioButton" mnemonicParsing="false" text="No" />
+         </items>
+      </ToolBar>
+      <TextArea fx:id="conditionsTArea" layoutX="16.0" layoutY="390.0" prefHeight="154.0" prefWidth="304.0" promptText="Enter Text Here" />
+      <Text fill="#c91111" layoutX="16.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the following information" />
+      <Button fx:id="continueButton" layoutX="245.0" layoutY="559.0" mnemonicParsing="false" text="Continue" />
+   </children>
+</AnchorPane>

@@ -126,7 +126,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
         //Tries to find an article to use, returns if it can't find one. 
         else{
             //Optimization potential: figure out another way to load the article list and search for a specific article.
-            ArticleList articleList = new ArticleList().generateArticles();
+            ArticleList articleList = new ArticleList().loadArticles();
             Article result = null;
             for(Article a: articleList.getArticleList()){
                 if(a.getId() == nextQuestionNum){

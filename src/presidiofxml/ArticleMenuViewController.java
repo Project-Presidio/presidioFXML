@@ -41,7 +41,7 @@ public class ArticleMenuViewController implements Initializable {
     @FXML 
     private Button selectButton;
     
-    private final ArrayList<Article> articleList = new ArticleList().generateArticles().getArticleList();
+    private final ArrayList<Article> articleList = new ArticleList().loadArticles().getArticleList();
     
     ObservableList<String> listItems = FXCollections.observableArrayList();
     

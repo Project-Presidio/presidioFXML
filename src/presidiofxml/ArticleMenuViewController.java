@@ -71,7 +71,7 @@ public class ArticleMenuViewController implements Initializable {
      * Searches for articles based on the content in searchField.
      */
     @FXML
-    public void search(){
+    private void search(){
         String searchWord = searchField.getText();
         for(String title: listItems){
             if(title.equals(searchWord)){
@@ -85,7 +85,7 @@ public class ArticleMenuViewController implements Initializable {
      * @throws IOException 
      */
     @FXML
-    public void back(ActionEvent event) throws IOException{
+    private void back(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
         //Retrieve the existing controller using the singleton pattern.
@@ -104,7 +104,7 @@ public class ArticleMenuViewController implements Initializable {
      * @throws java.io.IOException 
      */
     @FXML
-    public void selectItem(ActionEvent event) throws IOException{
+    private void selectItem(ActionEvent event) throws IOException{
         String selectedItem = this.listView.getSelectionModel().getSelectedItem();
         Article article = null;
         for(Article a: this.articleList){

@@ -57,7 +57,7 @@ public class ArticleDetailsViewController implements Initializable {
     }
     
     @FXML
-    public void back(ActionEvent event) throws IOException{
+    private void back(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleMenuView.fxml"));
         Parent root = fxmlLoader.load();

@@ -5,7 +5,13 @@
  */
 package Model;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,9 +35,21 @@ public class ArticleList {
         this.articleList = new ArrayList();
     }
     
-    public ArticleList generateArticles(){
-        //generate articles and insert them into articleList.
-        this.articleList.add(new Article(-1, "Title1", "Content1"));
+    public ArticleList loadArticles(){
+        //load articles and insert them into articleList.
+        File folder = new File("articles/");
+        File[] files = folder.listFiles();
+        for(File file : files){
+            if(file.isFile()){
+                try {
+                    this.articleList.add(new Article(Integer.parseInt(file.getName().substring(0,file.getName().indexOf(".html")))
+                            , "", new String(Files.readAllBytes(Paths.get(file.getPath())))));
+                } catch (IOException ex) {
+                    Logger.getLogger(ArticleList.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        //this.articleList.add(new Article(-1, "Title1", "<body>Content1</body>"));
         return this;
     }
 }

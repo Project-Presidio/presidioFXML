@@ -47,8 +47,13 @@ public class MenuUIController implements Initializable {
     }
     
     @FXML
-    private void goToSurveyView(){
-        System.out.println("Hit Surview View Button.");
+    private void goToSurveyView(ActionEvent event) throws IOException{
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SurveyMultipleChoiceView.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
     
     @FXML

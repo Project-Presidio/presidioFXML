@@ -6,6 +6,7 @@
 package presidiofxml;
 
 import Model.Article;
+import Model.ArticleList;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class ArticleMenuViewController implements Initializable {
     @FXML 
     private Button selectButton;
     
-    private final ArrayList<Article> articleList = new ArrayList();
+    private final ArrayList<Article> articleList = new ArticleList().generateArticles().getArticleList();
     
     ObservableList<String> listItems = FXCollections.observableArrayList();
     
@@ -56,7 +57,7 @@ public class ArticleMenuViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        articleList.add(new Article("Title","Content")); //should be replaced with a method to obtain articles
+        articleList.add(new Article(-1, "Title","Content")); //should be replaced with a method to obtain articles
         
         
         articleList.forEach((a) -> {

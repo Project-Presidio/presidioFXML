@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presidiofxml.SurveyMultipleChoiceViewController">
+   <children>
+      <ToolBar layoutX="1.0" prefHeight="40.0" prefWidth="335.0">
+         <items>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Presidio" wrappingWidth="197.93197631835938" />
+         </items>
+      </ToolBar>
+      <Label fx:id="titleLabel" layoutX="15.0" layoutY="45.0" text="Find Articles">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <BorderPane layoutX="13.0" layoutY="101.0" prefHeight="480.0" prefWidth="313.0">
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutY="14.0" prefHeight="200.0" prefWidth="313.0" spacing="20.0">
+                     <children>
+                        <RadioButton fx:id="option1" mnemonicParsing="false" onAction="#selectItem" text="Option 1" wrapText="true" />
+                        <RadioButton fx:id="option2" mnemonicParsing="false" onAction="#selectItem" text="Option 2" wrapText="true" />
+                        <RadioButton fx:id="option3" mnemonicParsing="false" onAction="#selectItem" text="Option 3" wrapText="true" />
+                        <RadioButton fx:id="option4" mnemonicParsing="false" onAction="#selectItem" text="Option 4" wrapText="true" />
+                        <RadioButton fx:id="option5" mnemonicParsing="false" onAction="#selectItem" text="Option 5" wrapText="true" />
+                        <RadioButton fx:id="option6" mnemonicParsing="false" onAction="#selectItem" text="Option 6" wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <Label fx:id="questionLabel" alignment="TOP_LEFT" text="This is where the question would go. And this is an example of text wrapping." wrapText="true" BorderPane.alignment="TOP_LEFT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#moveOntoNextQuestion" text="Continue" BorderPane.alignment="BOTTOM_RIGHT" />
+         </bottom>
+      </BorderPane>
+      <Label fx:id="questionNumberLabel" layoutX="14.0" layoutY="63.0" text="Question #">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

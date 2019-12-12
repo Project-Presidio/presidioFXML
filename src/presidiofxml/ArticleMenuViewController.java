@@ -32,8 +32,8 @@ import javafx.stage.Stage;
  */
 public class ArticleMenuViewController implements Initializable {
     
-    @FXML 
-    private TextField searchField;
+   // @FXML 
+    //private TextField searchField;
     
     @FXML
     private ListView<String> listView;
@@ -70,6 +70,7 @@ public class ArticleMenuViewController implements Initializable {
     /**
      * Searches for articles based on the content in searchField.
      */
+    /*
     @FXML
     private void search(){
         String searchWord = searchField.getText();
@@ -79,6 +80,7 @@ public class ArticleMenuViewController implements Initializable {
             }
         }
     }
+    */
     /**
      * Returns to the MenuUI, the previous window.
      * @param event

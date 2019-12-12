@@ -30,7 +30,7 @@
       "b": 3,
       "c": -1
     }
-  }
+  },
  "2": {
     "id": 2,
     "title": "What symptoms are you experiencing? ",
@@ -48,10 +48,11 @@
     "c": -4,
     "d": -5
     }
-   }
+   },
   "3": {
     "id": 3,
-    "title": "Do you think something is broken/sprained?" {
+    "title": "Do you think something is broken/sprained?",
+    "response": {
     "a": "Yes",
     "c": "No"
     },
@@ -61,7 +62,7 @@
     "a": 4,
     "b": 5
     }
-   }
+   },
    "4": {
     "id": 4,
     "title": "What do you think is injured? ",
@@ -82,11 +83,12 @@
     "e": -6,
     "f":  -6
     }
-   }
+   },
    
    "5": {
     "id": 5,
-    "title": "What is your physical distress?" {
+    "title": "What is your physical distress?" ,
+     "response": {
     "a": "answer 1",
     "b": "answer 2",
     "c": "answer 3",

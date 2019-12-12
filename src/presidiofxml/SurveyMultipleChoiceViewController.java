@@ -103,6 +103,9 @@ public class SurveyMultipleChoiceViewController implements Initializable {
      */
     @FXML
     private void moveOntoNextQuestion(ActionEvent event) throws IOException, InterruptedException{
+        for(RadioButton r: radioButtons) {
+            r.setVisible(true);
+        }
         int selected;
         for(selected = 0; selected<radioButtons.length; selected++){
             if(radioButtons[selected].isSelected())
@@ -179,8 +182,10 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     private void updateView(){
         this.questionLabel.setText(currentQuestion.getTitle());
         this.questionNumberLabel.setText("Question " + questionNumber);
+        System.out.println(this.currentQuestion.getResponse().size());
         switch(this.currentQuestion.getResponse().size()){
             case 2: 
+                System.out.println(this.currentQuestion.getResponse().size()+"2");
                 option1.setText(this.currentQuestion.getResponse().get("a"));
                 option2.setText(this.currentQuestion.getResponse().get("b"));
                 option3.setVisible(false); 
@@ -213,6 +218,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 option6.setVisible(false); 
                 break;
             case 6: 
+                System.out.println(this.currentQuestion.getResponse().size()+"6");
                 option1.setText(this.currentQuestion.getResponse().get("a"));
                 option2.setText(this.currentQuestion.getResponse().get("b"));
                 option3.setText(this.currentQuestion.getResponse().get("c"));

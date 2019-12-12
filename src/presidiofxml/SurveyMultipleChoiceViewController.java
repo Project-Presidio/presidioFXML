@@ -189,7 +189,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 option6.setVisible(false); 
                 break;
             case 3: 
-                option1.setText(this.currentQuestion.getResponse().get("1"));
+                option1.setText(this.currentQuestion.getResponse().get("a"));
                 option2.setText(this.currentQuestion.getResponse().get("b"));
                 option3.setText(this.currentQuestion.getResponse().get("c"));
                 option4.setVisible(false); 

@@ -51,7 +51,8 @@
    },
   "3": {
     "id": 3,
-    "title": "Do you think something is broken/sprained?" {
+    "title": "Do you think something is broken/sprained?",
+    "response": {
     "a": "Yes",
     "c": "No"
     },
@@ -86,7 +87,8 @@
    
    "5": {
     "id": 5,
-    "title": "What is your physical distress?" {
+    "title": "What is your physical distress?" ,
+     "response": {
     "a": "answer 1",
     "b": "answer 2",
     "c": "answer 3",

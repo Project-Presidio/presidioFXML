@@ -44,14 +44,14 @@
     
     "redirect": {
     "a": -2,
-    "b": -3,
-    "c": -4,
-    "d": -5
+    "b": -2,
+    "c": -2,
+    "d": -2
     }
    },
   "3": {
     "id": 3,
-    "title": "Do you think something is broken/sprained?",
+    "title": "Do you need to care for your injury before paramedics arrive?",
     "response": {
     "a": "Yes",
     "b": "No"
@@ -60,7 +60,7 @@
     
     "redirect": {
     "a": 4,
-    "b": 5
+    "b": -1
     }
    },
    "4": {

@@ -52,7 +52,14 @@ public class LocationInputViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        generateWebView("16802");
+        //generateWebView("16802");
+        
+        String locationQuery = "16802";
+        if(locationQuery.length() > 0){
+            resultingLocation = connectToLocationAPI(locationQuery);
+            System.out.println(resultingLocation.getLocation());
+            generateWebView(locationQuery);
+        }
     }
     
     /**
@@ -143,9 +150,11 @@ public class LocationInputViewController implements Initializable {
     private void submit(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
-        Parent root = fxmlLoader.load();
-        PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
+        PersonalDetailsViewController controller = PersonalDetailsViewController.getInstance();
         controller.setCivilianLocation(resultingLocation);
+        fxmlLoader.setController(controller);
+        Parent root = fxmlLoader.load();
+
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();

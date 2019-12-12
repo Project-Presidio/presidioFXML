@@ -79,10 +79,11 @@ public class MenuUIController implements Initializable {
         //old scene with civilian object passed
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
+        PersonalDetailsViewController controller = PersonalDetailsViewController.getInstance();
+        controller.load();
+        fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
-        PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
-        controller.load(civilian);
-        
+
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();

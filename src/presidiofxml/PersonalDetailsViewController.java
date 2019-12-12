@@ -40,6 +40,8 @@ public class PersonalDetailsViewController implements Initializable {
     private Label label;
     //  @FXML private PasswordField passField;
     @FXML
+    private Text coordinateText;
+    @FXML
     private Text alert;
     @FXML
     private TextField textField;
@@ -84,6 +86,20 @@ public class PersonalDetailsViewController implements Initializable {
             disability.setText(civilian.getPreexistingDisability());
         }
     }
+    public void load() {
+        textField.setText(civilian.getFullname());
+        date.setValue(civilian.getBirthday());
+        if(civilian.isSex())
+            female.fire();
+        else
+            male.fire();
+        if(civilian.getPreexistingDisability().equals(""))
+            no.fire();
+        else {
+            yes.fire();
+            disability.setText(civilian.getPreexistingDisability());
+        }
+    }
     
     /**
      * Runs a series of checks on the input to verify the user has inputted all requested values and moves onto the next page if they have.
@@ -110,7 +126,7 @@ public class PersonalDetailsViewController implements Initializable {
                     } else if ((yes.isSelected()) && (no.isSelected())) {
                         alert.setText("Please only select one disability option");
                     } else {
-                        System.out.println("all prompts answered");
+                        //System.out.println("all prompts answered");
                         
                         if(no.isSelected()){
                             disability.setText("");
@@ -133,6 +149,10 @@ public class PersonalDetailsViewController implements Initializable {
             }
         }
     }
+    /**
+     * Disables the other corresponding RadioButton and enables the disability prompt. 
+     * @param event 
+     */
     @FXML
     private void onYes(ActionEvent event) {
         disability.setOpacity(1);
@@ -140,6 +160,10 @@ public class PersonalDetailsViewController implements Initializable {
             no.setSelected(false);
         }
     }
+    /**
+     * Disables the other corresponding RadioButton and disables the disability prompt.
+     * @param event 
+     */
     @FXML
     private void onNo(ActionEvent event){
         if(yes.isSelected()){
@@ -148,6 +172,10 @@ public class PersonalDetailsViewController implements Initializable {
         }
     }
     
+    /**
+     * Disable the other corresponding RadioButton.
+     * @param event 
+     */
     @FXML
     private void onMale(ActionEvent event){
         if(female.isSelected()){
@@ -155,6 +183,10 @@ public class PersonalDetailsViewController implements Initializable {
         }
     }
     
+    /**
+     * Disable the other corresponding RadioButton.
+     * @param event 
+     */
     @FXML
     private void onFemale(ActionEvent event){
         if(male.isSelected()){
@@ -163,9 +195,11 @@ public class PersonalDetailsViewController implements Initializable {
     }
    
     @Override
-    public void initialize(URL url, ResourceBundle rb
-    ) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) {
+        System.out.println(civilian);
+        if(civilian != null)
+            load();
+        this.coordinateText.setText(this.civilianLocation.getCoordinatesAsDMS());
     }
 
     /**
@@ -175,6 +209,16 @@ public class PersonalDetailsViewController implements Initializable {
         this.civilianLocation = civilianLocation;
     }
 
+    @FXML
+    private void reset(ActionEvent event) throws IOException{
+        this.civilian = null;
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LocationInputView.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
+    }
     
     
 

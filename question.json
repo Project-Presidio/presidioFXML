@@ -54,7 +54,7 @@
     "title": "Do you think something is broken/sprained?",
     "response": {
     "a": "Yes",
-    "c": "No"
+    "b": "No"
     },
     
     

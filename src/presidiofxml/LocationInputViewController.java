@@ -59,7 +59,7 @@ public class LocationInputViewController implements Initializable {
      * Runs the API coordinate getter and updates the mapView
      */
     @FXML
-    public void search(){
+    private void search(){
         String locationQuery = searchField.getText();
         if(locationQuery != null){
             if (locationQuery.length() > 0) {
@@ -134,8 +134,13 @@ public class LocationInputViewController implements Initializable {
         return result;
     }
     
+    /**
+     * Opens the PersonalDetailsView knowing the resulting location.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
-    public void submit(ActionEvent event) throws IOException{
+    private void submit(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
         Parent root = fxmlLoader.load();

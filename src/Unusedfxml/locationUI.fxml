@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="335.0">
+         <items>
+            <Button fx:id="menuButton" mnemonicParsing="false" text="•••" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Setup" translateX="105.0" />
+         </items>
+      </ToolBar>
+      <Text fill="#0000007f" layoutX="102.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Presidio!" />
+      <Text fill="#00000080" layoutX="109.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We're here to help." />
+      <Text fill="#00000080" layoutX="78.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First, we'll need your location." />
+      <Button fx:id="continueButton" layoutX="245.0" layoutY="559.0" mnemonicParsing="false" text="Continue" />
+   </children>
+</AnchorPane>

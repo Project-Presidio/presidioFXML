@@ -21,6 +21,7 @@ public class PresidioFXML extends Application {
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("PersonalDetailsView.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("LocationInputView.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("SurveyMultipleChoiceView.fxml"));
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

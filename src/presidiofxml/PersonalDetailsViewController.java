@@ -84,7 +84,12 @@ public class PersonalDetailsViewController implements Initializable {
             disability.setText(civilian.getPreexistingDisability());
         }
     }
-      
+    
+    /**
+     * Runs a series of checks on the input to verify the user has inputted all requested values and moves onto the next page if they have.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void onSubmit(ActionEvent event) throws IOException {
         String name = textField.getText();
@@ -114,9 +119,12 @@ public class PersonalDetailsViewController implements Initializable {
                         civilian = new Civilian(textField.getText(), date.getValue(), female.isSelected(), 0,0, disability.getText(), civilianLocation); //female is 1 boolean
                         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
+                        
+                        MenuUIController controller = MenuUIController.getInstance();
+                        controller.setCivilian(civilian); //pass the civilian
+                        fxmlLoader.setController(controller);
+                        
                         Parent root = fxmlLoader.load();
-                        MenuUIController controller = fxmlLoader.<MenuUIController>getController();
-                        controller.setCivilian(civilian);
                         Scene scene = new Scene(root);
                         existingStage.setScene(scene);
                         existingStage.show();

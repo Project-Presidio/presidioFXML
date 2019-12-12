@@ -57,7 +57,7 @@ public class ArticleMenuViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        articleList.add(new Article(-1, "Title","Content")); //should be replaced with a method to obtain articles
+        articleList.add(new Article(-1, "Content")); //should be replaced with a method to obtain articles
         
         
         articleList.forEach((a) -> {
@@ -71,13 +71,31 @@ public class ArticleMenuViewController implements Initializable {
      * Searches for articles based on the content in searchField.
      */
     @FXML
-    public void search(){
+    private void search(){
         String searchWord = searchField.getText();
         for(String title: listItems){
             if(title.equals(searchWord)){
                 //limit the items in listItems
             }
         }
+    }
+    /**
+     * Returns to the MenuUI, the previous window.
+     * @param event
+     * @throws IOException 
+     */
+    @FXML
+    private void back(ActionEvent event) throws IOException{
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
+        //Retrieve the existing controller using the singleton pattern.
+        MenuUIController controller = MenuUIController.getInstance();
+        fxmlLoader.setController(controller);
+        
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
     }
     
     /**
@@ -86,7 +104,7 @@ public class ArticleMenuViewController implements Initializable {
      * @throws java.io.IOException 
      */
     @FXML
-    public void selectItem(ActionEvent event) throws IOException{
+    private void selectItem(ActionEvent event) throws IOException{
         String selectedItem = this.listView.getSelectionModel().getSelectedItem();
         Article article = null;
         for(Article a: this.articleList){
@@ -106,6 +124,5 @@ public class ArticleMenuViewController implements Initializable {
         existingStage.setScene(scene);
         existingStage.show();
     }
-    
     
 }

@@ -5,19 +5,33 @@
  */
 package Model;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 /**
  *
  * @author jxw5883
  */
 public class Article {
-    private int id;
+    private final int id;
     private final String title;
     private final String content;
 
-    public Article(int id, String title, String content) {
+    public Article(int id, String content) {
         this.id = id;
-        this.title = title;
         this.content = content;
+        this.title = extractTitle();
+    }
+    
+    /**
+     * Extract the title of the article by parsing the HTML for h1 tags.
+     * @return 
+     */
+    private String extractTitle(){
+        Document doc = Jsoup.parse(content);
+        Elements h1 = doc.select("h1");
+        return h1.text();
     }
 
     /**

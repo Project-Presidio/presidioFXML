@@ -12,7 +12,6 @@ import Model.Question;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;

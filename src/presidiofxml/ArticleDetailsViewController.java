@@ -6,13 +6,20 @@
 package presidiofxml;
 
 import Model.Article;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -49,5 +56,13 @@ public class ArticleDetailsViewController implements Initializable {
         webEngine.loadContent(article.getContent(), "text/html");
     }
     
-    
+    @FXML
+    private void back(ActionEvent event) throws IOException{
+        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleMenuView.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        existingStage.setScene(scene);
+        existingStage.show();
+    }
 }

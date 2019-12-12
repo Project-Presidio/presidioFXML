@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presidiofxml.PersonalDetailsViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text fx:id="alert" fill="RED" fontSmoothingType="LCD" layoutX="14.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the following information" wrappingWidth="300.9322509765625" />
       <TextArea fx:id="disability" layoutX="9.0" layoutY="338.0" opacity="0.0" prefHeight="175.0" prefWidth="317.0" promptText="Enter Disabilities Here" />
@@ -24,7 +24,7 @@
             <RadioButton fx:id="no" mnemonicParsing="false" onAction="#onNo" prefHeight="18.0" prefWidth="60.0" text="No" />
         </items>
       </ToolBar>
-      <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" textFill="#3103ff" />
+      <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" />
       <ToolBar layoutX="9.0" layoutY="214.0" prefHeight="40.0" prefWidth="157.0">
          <items>
             <RadioButton fx:id="male" mnemonicParsing="false" onAction="#onMale" text="Male" />
@@ -32,5 +32,8 @@
          </items>
       </ToolBar>
       <Text layoutX="10.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" />
+      <Button layoutX="175.0" layoutY="527.0" mnemonicParsing="false" onAction="#reset" prefHeight="28.0" prefWidth="74.0" text="Reset" textFill="RED" />
+      <Text layoutX="10.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinate:" />
+      <Text fx:id="coordinateText" layoutX="10.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.99999835691415" />
    </children>
 </AnchorPane>

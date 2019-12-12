@@ -30,7 +30,7 @@
       "b": 3,
       "c": -1
     }
-  },
+  }
  "2": {
     "id": 2,
     "title": "What symptoms are you experiencing? ",
@@ -48,7 +48,7 @@
     "c": -4,
     "d": -5
     }
-   },
+   }
   "3": {
     "id": 3,
     "title": "Do you think something is broken/sprained?" {
@@ -61,7 +61,7 @@
     "a": 4,
     "b": 5
     }
-   },
+   }
    "4": {
     "id": 4,
     "title": "What do you think is injured? ",
@@ -82,7 +82,7 @@
     "e": -6,
     "f":  -6
     }
-   },
+   }
    
    "5": {
     "id": 5,

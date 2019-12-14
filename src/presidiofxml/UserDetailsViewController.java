@@ -54,7 +54,6 @@ public class UserDetailsViewController implements Initializable {
         Parent root = fxmlLoader.load();
         PersonalDetailsViewController controller = fxmlLoader.<PersonalDetailsViewController>getController();
         controller.load(civilian);
-        
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();

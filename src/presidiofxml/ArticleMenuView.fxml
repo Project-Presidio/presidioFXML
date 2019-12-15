@@ -35,5 +35,6 @@
             </JFXButton>
          </left>
       </JFXToolbar>
+      <Label fx:id="alertLabel" layoutX="121.0" layoutY="563.0" prefHeight="18.0" prefWidth="150.0" text="Please select an article!" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

@@ -50,6 +50,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
+      <Label fx:id="alertLabel" layoutX="102.0" layoutY="557.0" prefHeight="18.0" prefWidth="155.0" text="Please select an option!" textFill="RED" visible="false" />
       <JFXToolbar prefHeight="45.0" prefWidth="335.0" style="-fx-background-color: #ef5350;">
          <left>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Presidio" translateX="10.0" wrappingWidth="236.93197631835938" BorderPane.alignment="CENTER">

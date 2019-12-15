@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -42,6 +43,9 @@ public class LocationInputViewController implements Initializable {
     
     @FXML
     private WebView mapView;
+    
+    @FXML
+    private Label alertLabel;
 
     private CoordinateLocation resultingLocation;
     /**
@@ -74,6 +78,10 @@ public class LocationInputViewController implements Initializable {
                 System.out.println(resultingLocation.getLocation());
                 generateWebView(locationQuery);
             } 
+            else{
+                alertLabel.setText("Please enter a valid location!");
+                alertLabel.setVisible(true);
+            }
         }
     }
     
@@ -110,7 +118,6 @@ public class LocationInputViewController implements Initializable {
         try {
             String query = String.format("q=%s", URLEncoder.encode(locationQuery, charset));
             URL url = new URL(host + query + ending);
-            System.out.println(url.toString());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -131,10 +138,18 @@ public class LocationInputViewController implements Initializable {
         //Grab the nested Json elements
         JsonParser parser = new JsonParser();
         JsonElement response = parser.parse(coords.toString());
-        System.out.println(response);
-        String lat = response.getAsJsonArray().get(0).getAsJsonObject().get("lat").getAsString();
-        String lon = response.getAsJsonArray().get(0).getAsJsonObject().get("lon").getAsString();
-        
+        System.out.println("API Response: " + response);
+        String lat = null;
+        String lon = null;
+        try{
+            lat = response.getAsJsonArray().get(0).getAsJsonObject().get("lat").getAsString();
+            lon = response.getAsJsonArray().get(0).getAsJsonObject().get("lon").getAsString();
+        }
+        catch(IndexOutOfBoundsException e){
+            alertLabel.setText("Location not found!");
+            alertLabel.setVisible(true);
+            return this.resultingLocation;
+        }
         CoordinateLocation result = new CoordinateLocation();
         result.updateLocation(lat, lon);
         
@@ -142,7 +157,7 @@ public class LocationInputViewController implements Initializable {
     }
     
     /**
-     * Opens the PersonalDetailsView knowing the resulting location.
+     * Creates a PersonalDetailsView and passes it the resulting location.
      * @param event
      * @throws IOException 
      */

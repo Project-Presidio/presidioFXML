@@ -9,6 +9,7 @@ import Model.Article;
 import Model.ArticleList;
 import Model.QuestionList;
 import Model.Question;
+import com.jfoenix.controls.JFXRadioButton;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -35,22 +37,25 @@ import javafx.stage.Stage;
 public class SurveyMultipleChoiceViewController implements Initializable {
     
     @FXML
-    private RadioButton option1;
+    private JFXRadioButton option1;
     @FXML
-    private RadioButton option2;
+    private JFXRadioButton option2;
     @FXML
-    private RadioButton option3;
+    private JFXRadioButton option3;
     @FXML
-    private RadioButton option4;
+    private JFXRadioButton option4;
     @FXML
-    private RadioButton option5;
+    private JFXRadioButton option5;
     @FXML
-    private RadioButton option6;
-    private RadioButton[] radioButtons;
+    private JFXRadioButton option6;
+    
+    private JFXRadioButton[] radioButtons;
     @FXML
     private Label questionNumberLabel;
     @FXML
     private Label questionLabel;
+    @FXML
+    private Label alertLabel;
     
     private QuestionList questionList;
     
@@ -60,9 +65,9 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     
     private static final String QUESTION_FILE_LOCATION = "question.json";
     
-    @FXML
-    public void submit(){
-        //move onto the next question
+    public void setup(){
+        readQuestionFile();
+        updateView();
     }
 
     /**
@@ -73,15 +78,19 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.radioButtons = new RadioButton[6]; 
+        this.radioButtons = new JFXRadioButton[6]; 
         radioButtons[0] = option1;
         radioButtons[1] = option2;
         radioButtons[2] = option3;
         radioButtons[3] = option4;
         radioButtons[4] = option5;
         radioButtons[5] = option6;
-        readQuestionFile();
-        updateView();
+        
+        for(JFXRadioButton r: radioButtons){
+            r.selectedColorProperty().set(Color.web("#ef5350"));
+        }
+        //readQuestionFile();
+        //updateView();
     }    
     
     /**
@@ -103,9 +112,6 @@ public class SurveyMultipleChoiceViewController implements Initializable {
      */
     @FXML
     private void moveOntoNextQuestion(ActionEvent event) throws IOException, InterruptedException{
-        for(RadioButton r: radioButtons) {
-            r.setVisible(true);
-        }
         int selected;
         for(selected = 0; selected<radioButtons.length; selected++){
             if(radioButtons[selected].isSelected())
@@ -120,11 +126,26 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             case 3: nextQuestionNum = currentQuestion.getRedirect().get("d"); break;
             case 4: nextQuestionNum = currentQuestion.getRedirect().get("e"); break;
             case 5: nextQuestionNum = currentQuestion.getRedirect().get("f"); break;
-            default: System.err.println("An invalid question redirect was selected!");
+            case 6: this.alertLabel.setVisible(true); return;
+            default: System.err.println("An invalid question redirect was selected! The question selected was: " + selected);
         }
-        if(nextQuestionNum >= 0)
-            currentQuestion = this.questionList.getQuestion(nextQuestionNum);
         
+        if(nextQuestionNum >= 0){
+            setCurrentQuestion(this.questionList.getQuestion(nextQuestionNum));
+            Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SurveyMultipleChoiceView.fxml"));
+            Parent root = fxmlLoader.load();
+            SurveyMultipleChoiceViewController controller = fxmlLoader.getController();
+            
+            controller.setQuestionList(questionList);
+            controller.setCurrentQuestion(currentQuestion);
+            controller.setQuestionNumber(questionNumber+1);
+            controller.updateView();
+            
+            Scene scene = new Scene(root);
+            existingStage.setScene(scene);
+            existingStage.show();
+        }
         //Tries to find an article to use, returns if it can't find one. 
         else{
             //Optimization potential: figure out another way to load the article list and search for a specific article.
@@ -169,8 +190,8 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 file += st;
             }
             
-            this.questionList = QuestionList.importJSON(file);
-            currentQuestion = (Question) this.questionList.getQuestionList().get("0");
+            this.setQuestionList(QuestionList.importJSON(file));
+            setCurrentQuestion((Question) this.questionList.getQuestionList().get("0"));
         } catch (IOException ex) {
             Logger.getLogger(SurveyMultipleChoiceViewController.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -182,10 +203,8 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     private void updateView(){
         this.questionLabel.setText(currentQuestion.getTitle());
         this.questionNumberLabel.setText("Question " + questionNumber);
-        System.out.println(this.currentQuestion.getResponse().size());
         switch(this.currentQuestion.getResponse().size()){
             case 2: 
-                System.out.println(this.currentQuestion.getResponse().size()+"2");
                 option1.setText(this.currentQuestion.getResponse().get("a"));
                 option2.setText(this.currentQuestion.getResponse().get("b"));
                 option3.setVisible(false); 
@@ -218,7 +237,6 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 option6.setVisible(false); 
                 break;
             case 6: 
-                System.out.println(this.currentQuestion.getResponse().size()+"6");
                 option1.setText(this.currentQuestion.getResponse().get("a"));
                 option2.setText(this.currentQuestion.getResponse().get("b"));
                 option3.setText(this.currentQuestion.getResponse().get("c"));
@@ -237,5 +255,26 @@ public class SurveyMultipleChoiceViewController implements Initializable {
      */
     private void openArticle(int articleId){
         
+    }
+
+    /**
+     * @param currentQuestion the currentQuestion to set
+     */
+    public void setCurrentQuestion(Question currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
+
+    /**
+     * @param questionNumber the questionNumber to set
+     */
+    public void setQuestionNumber(int questionNumber) {
+        this.questionNumber = questionNumber;
+    }
+
+    /**
+     * @param questionList the questionList to set
+     */
+    public void setQuestionList(QuestionList questionList) {
+        this.questionList = questionList;
     }
 }

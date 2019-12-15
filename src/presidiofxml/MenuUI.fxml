@@ -20,10 +20,10 @@
       </JFXToolbar>
       <VBox layoutX="22.0" layoutY="60.0" prefHeight="526.0" prefWidth="292.0" spacing="20.0">
          <children>
-            <JFXButton onAction="#goToArticlesView" prefHeight="35.0" prefWidth="292.0" stylesheets="@raised-buttons.css" text="Show Articles" />
-            <JFXButton onAction="#goToSurveyView" prefHeight="35.0" prefWidth="292.0" stylesheets="@raised-buttons.css" text="Search for Articles" />
-            <JFXButton onAction="#goToUserDetailsView" prefHeight="35.0" prefWidth="292.0" stylesheets="@raised-buttons.css" text="Read/Update User Details" />
-            <JFXButton disable="true" prefHeight="35.0" prefWidth="292.0" stylesheets="@raised-buttons.css" text="Send an Alert (Not yet implemented)" />
+            <JFXButton buttonType="RAISED" focusTraversable="false" onAction="#goToArticlesView" prefHeight="35.0" prefWidth="292.0" style="-fx-background-color: #ef5350;" text="Show Articles" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" focusTraversable="false" onAction="#goToSurveyView" prefHeight="35.0" prefWidth="292.0" style="-fx-background-color: #ef5350;" text="Search for Articles" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" focusTraversable="false" onAction="#updateUser" prefHeight="35.0" prefWidth="292.0" style="-fx-background-color: #ef5350;" text="Read/Update User Details" textFill="WHITE" />
+            <JFXButton disable="true" focusTraversable="false" prefHeight="35.0" prefWidth="292.0" stylesheets="@raised-buttons.css" text="Send an Alert (Not yet implemented)" />
          </children>
       </VBox>
    </children>

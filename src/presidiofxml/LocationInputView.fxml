@@ -31,5 +31,6 @@
             </Text>
          </left>
       </JFXToolbar>
+      <Label fx:id="alertLabel" layoutX="150.0" layoutY="52.0" text="Please enter a valid location!" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -14,30 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fx:id="alert" fill="RED" fontSmoothingType="LCD" layoutX="15.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the following information" wrappingWidth="300.9322509765625" />
-      <TextArea fx:id="disability" layoutX="9.0" layoutY="386.0" opacity="0.0" prefHeight="125.0" prefWidth="317.0" promptText="Enter Disabilities Here" />
-      <TextField fx:id="textField" layoutX="12.0" layoutY="111.0" promptText="Enter Name" />
-      <Text layoutX="11.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
-      <Text layoutX="13.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate" />
-      <DatePicker fx:id="date" layoutX="12.0" layoutY="185.0" prefHeight="40.0" prefWidth="157.0" promptText="10/27/2000" />
-      <Text layoutX="9.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any pre-existing disabilities?" />
-      <ToolBar layoutX="11.0" layoutY="337.0" prefHeight="40.0" prefWidth="157.0">
-        <items>
-            <RadioButton fx:id="yes" mnemonicParsing="false" onAction="#onYes" text="Yes" />
-            <RadioButton fx:id="no" mnemonicParsing="false" onAction="#onNo" prefHeight="18.0" prefWidth="60.0" text="No" />
-        </items>
-      </ToolBar>
-      <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" />
-      <ToolBar layoutX="10.0" layoutY="264.0" prefHeight="40.0" prefWidth="157.0">
-         <items>
-            <RadioButton fx:id="male" mnemonicParsing="false" onAction="#onMale" text="Male" />
-            <RadioButton fx:id="female" mnemonicParsing="false" onAction="#onFemale" text="Female" />
-         </items>
-      </ToolBar>
-      <Text layoutX="11.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" />
-      <Button layoutX="175.0" layoutY="527.0" mnemonicParsing="false" onAction="#reset" prefHeight="28.0" prefWidth="74.0" text="Reset" textFill="RED" />
-      <Text layoutX="10.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinate:" />
-      <Text fx:id="coordinateText" layoutX="10.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.99999835691415" />
       <JFXToolbar prefHeight="45.0" prefWidth="335.0" style="-fx-background-color: #ef5350;">
          <left>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Presidio Setup" translateX="10.0" wrappingWidth="236.93197631835938" BorderPane.alignment="CENTER">
@@ -47,5 +22,33 @@
             </Text>
          </left>
       </JFXToolbar>
-   </children>
+      <Text fx:id="alert" fill="RED" fontSmoothingType="LCD" layoutX="9.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please fill out the following information" wrappingWidth="300.9322509765625" />
+      <Text layoutX="11.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
+      <JFXTextField fx:id="textField" focusColor="#ef5350" layoutX="11.0" layoutY="111.0" prefHeight="28.0" prefWidth="162.0" promptText="Enter Name" />
+      <Text layoutX="11.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate" />
+      <JFXDatePicker fx:id="date" defaultColor="#ef5350" layoutX="10.0" layoutY="176.0" prefWidth="182.0" promptText="01/31/2000" />
+      <Text layoutX="11.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" />
+      <JFXToolbar layoutX="10.0" layoutY="241.0" prefHeight="40.0" prefWidth="157.0">
+         <left>
+            <JFXRadioButton fx:id="male" onAction="#onMale" text="Male" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <JFXRadioButton fx:id="female" onAction="#onFemale" text="Female" BorderPane.alignment="CENTER" />
+         </right>
+      </JFXToolbar>
+      <Text layoutX="9.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any pre-existing disabilities?" />
+      <JFXToolbar layoutX="9.0" layoutY="308.0" prefHeight="40.0" prefWidth="157.0">
+         <right>
+            <JFXRadioButton fx:id="no" onAction="#onNo" text="No" translateX="-26.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <JFXRadioButton fx:id="yes" onAction="#onYes" text="Yes" BorderPane.alignment="CENTER" />
+         </left>
+      </JFXToolbar>
+      <Button fx:id="button" layoutX="258.0" layoutY="527.0" mnemonicParsing="false" onAction="#onSubmit" text="Continue" />
+      <Text layoutX="10.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinate:" />
+      <Text fx:id="coordinateText" layoutX="10.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="156.99999835691415" />
+      <Button layoutX="175.0" layoutY="527.0" mnemonicParsing="false" onAction="#reset" prefHeight="28.0" prefWidth="74.0" text="Reset" textFill="RED" />
+      <JFXTextArea fx:id="disability" focusColor="#ef5350" layoutX="9.0" layoutY="348.0" prefHeight="163.0" prefWidth="317.0" promptText="Enter Disabilities Here" visible="false" />
+    </children>
 </AnchorPane>

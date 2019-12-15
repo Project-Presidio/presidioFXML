@@ -7,6 +7,9 @@ package presidiofxml;
 
 import Model.Civilian;
 import Model.CoordinateLocation;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -20,9 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -44,19 +45,19 @@ public class PersonalDetailsViewController implements Initializable {
     @FXML
     private Text alert;
     @FXML
-    private TextField textField;
+    private JFXTextField textField;
     @FXML
-    private TextArea disability;
+    private JFXTextArea disability;
     @FXML
     private DatePicker date;
     @FXML
-    private RadioButton yes;
+    private JFXRadioButton yes;
     @FXML
-    private RadioButton no;
+    private JFXRadioButton no;
     @FXML
-    private RadioButton male;
+    private JFXRadioButton male;
     @FXML
-    private RadioButton female;
+    private JFXRadioButton female;
     
     private Civilian civilian;
     private CoordinateLocation civilianLocation;
@@ -126,7 +127,6 @@ public class PersonalDetailsViewController implements Initializable {
                     } else if ((yes.isSelected()) && (no.isSelected())) {
                         alert.setText("Please only select one disability option");
                     } else {
-                        //System.out.println("all prompts answered");
                         
                         if(no.isSelected()){
                             disability.setText("");
@@ -155,7 +155,7 @@ public class PersonalDetailsViewController implements Initializable {
      */
     @FXML
     private void onYes(ActionEvent event) {
-        disability.setOpacity(1);
+        disability.setVisible(true);
         if(no.isSelected()){
             no.setSelected(false);
         }
@@ -168,7 +168,7 @@ public class PersonalDetailsViewController implements Initializable {
     private void onNo(ActionEvent event){
         if(yes.isSelected()){
             yes.setSelected(false);
-            disability.setOpacity(0);
+            disability.setVisible(false);
         }
     }
     
@@ -196,10 +196,14 @@ public class PersonalDetailsViewController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(civilian);
         if(civilian != null)
             load();
         this.coordinateText.setText(this.civilianLocation.getCoordinatesAsDMS());
+        
+        this.no.selectedColorProperty().set(Color.web("#ef5350"));
+        this.yes.selectedColorProperty().set(Color.web("#ef5350"));
+        this.male.selectedColorProperty().set(Color.web("#ef5350"));
+        this.female.selectedColorProperty().set(Color.web("#ef5350"));
     }
 
     /**

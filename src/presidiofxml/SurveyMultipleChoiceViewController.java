@@ -9,6 +9,7 @@ import Model.Article;
 import Model.ArticleList;
 import Model.QuestionList;
 import Model.Question;
+import com.jfoenix.controls.JFXRadioButton;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -35,18 +37,19 @@ import javafx.stage.Stage;
 public class SurveyMultipleChoiceViewController implements Initializable {
     
     @FXML
-    private RadioButton option1;
+    private JFXRadioButton option1;
     @FXML
-    private RadioButton option2;
+    private JFXRadioButton option2;
     @FXML
-    private RadioButton option3;
+    private JFXRadioButton option3;
     @FXML
-    private RadioButton option4;
+    private JFXRadioButton option4;
     @FXML
-    private RadioButton option5;
+    private JFXRadioButton option5;
     @FXML
-    private RadioButton option6;
-    private RadioButton[] radioButtons;
+    private JFXRadioButton option6;
+    
+    private JFXRadioButton[] radioButtons;
     @FXML
     private Label questionNumberLabel;
     @FXML
@@ -75,13 +78,17 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.radioButtons = new RadioButton[6]; 
+        this.radioButtons = new JFXRadioButton[6]; 
         radioButtons[0] = option1;
         radioButtons[1] = option2;
         radioButtons[2] = option3;
         radioButtons[3] = option4;
         radioButtons[4] = option5;
         radioButtons[5] = option6;
+        
+        for(JFXRadioButton r: radioButtons){
+            r.selectedColorProperty().set(Color.web("#ef5350"));
+        }
         //readQuestionFile();
         //updateView();
     }    

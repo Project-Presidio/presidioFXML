@@ -21,8 +21,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -41,6 +41,9 @@ public class ArticleMenuViewController implements Initializable {
     @FXML 
     private Button selectButton;
     
+    @FXML
+    private Label alertLabel;
+    
     private final ArrayList<Article> articleList = new ArticleList().loadArticles().getArticleList();
     
     ObservableList<String> listItems = FXCollections.observableArrayList();
@@ -58,7 +61,7 @@ public class ArticleMenuViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //articleList.add(new Article(-1, "Content")); //should be replaced with a method to obtain articles
-        
+        this.alertLabel.setVisible(false);
         
         articleList.forEach((a) -> {
             listItems.add(a.toString());
@@ -106,7 +109,7 @@ public class ArticleMenuViewController implements Initializable {
      * @throws java.io.IOException 
      */
     @FXML
-    private void selectItem(ActionEvent event) throws IOException{
+    private void selectItem(ActionEvent event) throws IOException, InterruptedException{
         String selectedItem = this.listView.getSelectionModel().getSelectedItem();
         Article article = null;
         for(Article a: this.articleList){
@@ -114,7 +117,11 @@ public class ArticleMenuViewController implements Initializable {
                 article = a;
             }
         }
-        
+        if(article == null) {
+            System.err.println("Please select an article!");
+            this.alertLabel.setVisible(true);
+            return;
+        }
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleDetailsView.fxml"));
         Parent root = fxmlLoader.load();

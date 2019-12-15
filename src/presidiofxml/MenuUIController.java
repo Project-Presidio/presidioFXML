@@ -57,6 +57,8 @@ public class MenuUIController implements Initializable {
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SurveyMultipleChoiceView.fxml"));
         Parent root = fxmlLoader.load();
+        SurveyMultipleChoiceViewController controller = fxmlLoader.getController();
+        controller.setup();
         Scene scene = new Scene(root);
         existingStage.setScene(scene);
         existingStage.show();
@@ -97,6 +99,7 @@ public class MenuUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
     /**

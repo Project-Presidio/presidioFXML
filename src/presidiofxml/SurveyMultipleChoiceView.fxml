@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -23,12 +23,12 @@
                <children>
                   <VBox layoutY="14.0" prefHeight="200.0" prefWidth="313.0" spacing="20.0">
                      <children>
-                        <RadioButton fx:id="option1" mnemonicParsing="false" onAction="#selectItem" text="Option 1" wrapText="true" />
-                        <RadioButton fx:id="option2" mnemonicParsing="false" onAction="#selectItem" text="Option 2" wrapText="true" />
-                        <RadioButton fx:id="option3" mnemonicParsing="false" onAction="#selectItem" text="Option 3" wrapText="true" />
-                        <RadioButton fx:id="option4" mnemonicParsing="false" onAction="#selectItem" text="Option 4" wrapText="true" />
-                        <RadioButton fx:id="option5" mnemonicParsing="false" onAction="#selectItem" text="Option 5" wrapText="true" />
-                        <RadioButton fx:id="option6" mnemonicParsing="false" onAction="#selectItem" text="Option 6" wrapText="true" />
+                        <JFXRadioButton fx:id="option1" onAction="#selectItem" text="Option 1" />
+                        <JFXRadioButton fx:id="option2" onAction="#selectItem" text="Option 2" />
+                        <JFXRadioButton fx:id="option3" onAction="#selectItem" text="Option 3" />
+                        <JFXRadioButton fx:id="option4" onAction="#selectItem" text="Option 4" />
+                        <JFXRadioButton fx:id="option5" onAction="#selectItem" text="Option 5" />
+                        <JFXRadioButton fx:id="option6" onAction="#selectItem" text="Option 6" />
                      </children>
                   </VBox>
                </children>

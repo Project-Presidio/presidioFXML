@@ -194,13 +194,18 @@ public class PersonalDetailsViewController implements Initializable {
         }
     }
    
+    /**
+     * Set the coordinate Text object, and update the selectedColorProperty() of the radioButtons.
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if(civilian != null)
             load();
         this.coordinateText.setText(this.civilianLocation.getCoordinatesAsDMS());
         
-        this.no.selectedColorProperty().set(Color.web("#ef5350"));
+        this.no.selectedColorProperty().set(Color.web("#ef5350")); //Red color
         this.yes.selectedColorProperty().set(Color.web("#ef5350"));
         this.male.selectedColorProperty().set(Color.web("#ef5350"));
         this.female.selectedColorProperty().set(Color.web("#ef5350"));
@@ -213,6 +218,11 @@ public class PersonalDetailsViewController implements Initializable {
         this.civilianLocation = civilianLocation;
     }
 
+    /**
+     * Resets all details by setting civilian to null and loading the LocationInputView.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void reset(ActionEvent event) throws IOException{
         this.civilian = null;

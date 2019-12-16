@@ -42,15 +42,20 @@ public class Question {
     private HashMap<String, String> response;
     private HashMap<String, Integer> redirect;
     
+    /**
+     * De-serializes a Question object from a Json String.
+     * @param json: String
+     * @return Question 
+     */
     public static Question importFromJSON(String json){
         Gson gson = new Gson();
         return gson.fromJson(json, Question.class);
     }
 
     /**
-     *
-     * @param json
-     * @return
+     * De-serializes a Question object from a JsonObject.
+     * @param json: JsonObject
+     * @return Question
      */
     public static Question importFromJSON(JsonObject json){
         Gson gson = new Gson();

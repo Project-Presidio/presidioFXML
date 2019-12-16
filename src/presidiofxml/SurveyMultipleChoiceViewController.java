@@ -65,6 +65,9 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     
     private static final String QUESTION_FILE_LOCATION = "question.json";
     
+    /**
+     * Generates the questionList and updates the View to reflect that.
+     */
     public void setup(){
         readQuestionFile();
         updateView();
@@ -98,7 +101,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
      * @param event
      */
     @FXML
-    public void selectItem(ActionEvent event){
+    private void selectItem(ActionEvent event){
         for (RadioButton radioButton : radioButtons) {
             radioButton.setSelected(false);
         }
@@ -246,14 +249,6 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 break;
             default: System.err.println("Invalid Question Response length!");
         }
-        
-    }
-    
-    /**
-     * Opens an article the app is connected to. 
-     * @param articleId 
-     */
-    private void openArticle(int articleId){
         
     }
 

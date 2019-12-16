@@ -56,6 +56,11 @@ public class ArticleDetailsViewController implements Initializable {
         webEngine.loadContent(article.getContent(), "text/html");
     }
     
+    /**
+     * Return to the ArticleMenuView. 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void back(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

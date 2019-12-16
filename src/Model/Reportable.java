@@ -11,5 +11,4 @@ package Model;
  */
 public interface Reportable {
     public String generateReport();
-    
 }

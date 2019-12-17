@@ -6,9 +6,13 @@
 package Model;
 
 /**
- *
+ * This interface contains the definition of a Reportable object.
  * @author jxw5883
  */
 public interface Reportable {
+    /**
+     * A reportable object creates a report and returns it as a String.
+     * @return a report
+     */
     public String generateReport();
 }

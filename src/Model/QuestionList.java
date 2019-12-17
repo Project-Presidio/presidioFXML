@@ -11,49 +11,50 @@ import com.google.gson.JsonParser;
 import java.util.HashMap;
 
 /**
- *
+ * This model class contains the definition of a QuestionList based off a JSON format.
+ * The following is the JSON format this class is based on.
+ * {
+ *  "0": {
+ *    "id": 0,
+ *    "title": "What best describes your current situation?",
+ *    "response": {
+ *      "a": "Seismic",
+ *      "b": "Flood",
+ *      "c": "Inclement Weather",
+ *     "d": "Emergency"
+ *    },
+ *    
+ *    "redirect":{
+ *      "a": 1,
+ *      "b": 1,
+ *      "c": 1,
+ *      "d": 1
+ *    }
+ *  },
+ *  "1": {
+ *    "id": 1,
+ *    "title": "Is this a true false question?",
+ *    "response": {
+ *      "a": "Yes",
+ *      "b": "No"
+ *    },
+ *   
+ *    "redirect":{
+ *      "a": -1,
+ *      "b": -2
+ *    }
+ *  }
+ *}
  * @author jxw5883
  */
 public class QuestionList {
-    //Json Format
-    /*
-{
-  "0": {
-    "id": 0,
-    "title": "What best describes your current situation?",
-    "response": {
-      "a": "Seismic",
-      "b": "Flood",
-      "c": "Inclement Weather",
-      "d": "Emergency"
-    },
-    
-    "redirect":{
-      "a": 1,
-      "b": 1,
-      "c": 1,
-      "d": 1
-    }
-  },
-  "1": {
-    "id": 1,
-    "title": "Is this a true false question?",
-    "response": {
-      "a": "Yes",
-      "b": "No"
-    },
-    
-    "redirect":{
-      "a": -1,
-      "b": -2
-    }
-  }
-}
-    */
-    
     
     private final HashMap<String, Question> questionList;
 
+    /**
+     * Initializes a QuestionList with an existing one.
+     * @param questionList 
+     */
     public QuestionList(HashMap<String,Question> questionList){
         this.questionList = questionList;
     }
@@ -67,6 +68,7 @@ public class QuestionList {
     
     /**
      * De-serializes a QuestionList from Json. 
+     * This function manually extracts Questions objects from the JSON.
      * @param rawJson
      * @return QuestionList
      */
@@ -95,6 +97,11 @@ public class QuestionList {
         return gson.toJson(this);
     }
     
+    /**
+     * Returns a question from the questionList based on the Question number.
+     * @param questionId
+     * @return 
+     */
     public Question getQuestion(int questionId){
         return this.questionList.get(Integer.toString(questionId));
     }

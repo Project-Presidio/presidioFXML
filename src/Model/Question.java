@@ -10,35 +10,35 @@ import com.google.gson.JsonObject;
 import java.util.HashMap;
 
 /**
- *
+ * This model class contains the definition of a Question based off a JSON format.
+ * The following is the JSON format this class is based on.
+ * {
+ * "question": {
+ *   "id": 0,
+ *   "title": "What best describes your current situation?",
+ *   "response": {
+ *     "a": "Seismic",
+ *     "b": "Flood",
+ *     "c": "Inclement Weather",
+ *     "d": "Emergency"
+ *   },
+ *   
+ *   "redirect":{
+ *     "a": 1,
+ *     "b": 2,
+ *     "c": 3,
+ *     "d": 4
+ *   }
+ *  }
+ *}
  * @author jxw5883
  */
 public class Question {
     
-//JSON Format
-/*
-{
-  "question": {
-    "id": 0,
-    "title": "What best describes your current situation?",
-    "response": {
-      "a": "Seismic",
-      "b": "Flood",
-      "c": "Inclement Weather",
-      "d": "Emergency"
-    },
-    
-    "redirect":{
-      "a": 1,
-      "b": 2,
-      "c": 3,
-      "d": 4
-    }
-  }
-}
-*/
     private int id;
     private String title;
+    
+    //Gson de-serializes Json Objects to Mappings.
     private HashMap<String, String> response;
     private HashMap<String, Integer> redirect;
     

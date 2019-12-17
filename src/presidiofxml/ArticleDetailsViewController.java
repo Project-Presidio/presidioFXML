@@ -22,8 +22,8 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface for viewing individual articles. 
+ * It presents articles (formatted as HTML content) in a WebView.
  * @author jxw5883
  */
 public class ArticleDetailsViewController implements Initializable {
@@ -56,6 +56,11 @@ public class ArticleDetailsViewController implements Initializable {
         webEngine.loadContent(article.getContent(), "text/html");
     }
     
+    /**
+     * Return to the ArticleMenuView. 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void back(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

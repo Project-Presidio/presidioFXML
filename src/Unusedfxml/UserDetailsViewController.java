@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presidiofxml;
+package Unusedfxml;
 
 import Model.Civilian;
 import java.io.IOException;
@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import presidiofxml.PersonalDetailsViewController;
 
 /**
  * FXML Controller class

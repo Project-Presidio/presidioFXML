@@ -19,8 +19,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface for a menu.
+ * This allows a user to select between multiple use cases. 
  * @author jxw5883
  */
 public class MenuUIController implements Initializable {
@@ -29,17 +29,28 @@ public class MenuUIController implements Initializable {
     
     private Civilian civilian;
     
-    
+    /**
+     * Implements the Singleton Pattern.
+     * @return MenuUIController
+     */
     public static MenuUIController getInstance(){
         return INSTANCE;
     }
     
+    /**
+     * Switch to the AlertView (not yet implemented).
+     */
     @FXML
     private void goToAlertView(){
         System.out.println("Hit Alert Button.");
         
     }
     
+    /**
+     * Switch to the ArticleMenuView.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void goToArticlesView(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -52,6 +63,11 @@ public class MenuUIController implements Initializable {
         existingStage.show();
     }
     
+    /**
+     * Switch to the SurveyMultipleChoiceView.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void goToSurveyView(ActionEvent event) throws IOException{
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -63,25 +79,18 @@ public class MenuUIController implements Initializable {
         existingStage.setScene(scene);
         existingStage.show();
     }
-    
-    @FXML
-    private void goToUserDetailsView(ActionEvent event) throws IOException{
-        Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserDetailsView.fxml"));
-        Parent root = fxmlLoader.load();
-        UserDetailsViewController controller = fxmlLoader.<UserDetailsViewController>getController();
-        controller.setCivilian(civilian);
-        Scene scene = new Scene(root);
-        existingStage.setScene(scene);
-        existingStage.show();
-    }
 
-      @FXML
+    /**
+     * Switch to the PersonalDetailsViewController
+     * @param event
+     * @throws IOException 
+     */
+    @FXML
     private void updateUser(ActionEvent event) throws IOException {
         //old scene with civilian object passed
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PersonalDetailsView.fxml"));
-        PersonalDetailsViewController controller = PersonalDetailsViewController.getInstance();
+        PersonalDetailsViewController controller = PersonalDetailsViewController.getInstance(); //singleton pattern
         controller.load();
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
@@ -98,8 +107,6 @@ public class MenuUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
     }    
 
     /**

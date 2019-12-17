@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import java.util.Date;
 
 /**
- *
+ * This abstract model class contains the definition of a location.
  * @author jxw5883
  */
 public abstract class Location implements Reportable{

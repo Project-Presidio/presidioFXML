@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
+import java.net.HttpURLConnection; //potentially deprecated?
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,8 +32,9 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface for manual location input.
+ * It presents a search bar and a map to the user.
+ * When a user sends a search query, this controller queries a reverse geolocation API to determine the coordinates of an address.
  * @author jxw5883
  */
 public class LocationInputViewController implements Initializable {
@@ -48,6 +49,7 @@ public class LocationInputViewController implements Initializable {
     private Label alertLabel;
 
     private CoordinateLocation resultingLocation;
+    
     /**
      * Initializes the controller class.
      * @param url
@@ -55,9 +57,7 @@ public class LocationInputViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        //generateWebView("16802");
-        
+        //Sets the default location to 16802.
         String locationQuery = "16802";
         if(locationQuery.length() > 0){
             resultingLocation = connectToLocationAPI(locationQuery);
@@ -67,13 +67,13 @@ public class LocationInputViewController implements Initializable {
     }
     
     /**
-     * Runs the API coordinate getter and updates the mapView
+     * Queries the reverse geolocation API and updates the mapView.
      */
     @FXML
     private void search(){
         String locationQuery = searchField.getText();
         if(locationQuery != null){
-            if (locationQuery.length() > 0) {
+            if (locationQuery.length() > 0) { //checks if a user inputted data.
                 resultingLocation = connectToLocationAPI(locationQuery);
                 System.out.println(resultingLocation.getLocation());
                 generateWebView(locationQuery);
@@ -95,6 +95,7 @@ public class LocationInputViewController implements Initializable {
             //String host = "https://www.google.com/maps/embed?origin=mfe&pb=";
             String charset = "UTF-8";
             WebEngine webEngine = mapView.getEngine();
+            //a google maps embed
             String request = String.format("<div class=\"mapouter\"><div class=\"gmap_canvas\"><iframe width=\"305\" height=\"400\" id=\"gmap_canvas\" src=\"https://maps.google.com/maps?q=%25s&t=&z=13&ie=UTF8&iwloc=&output=embed\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\"></iframe><a href=\"https://www.whatismyip-address.com\"></a></div><style>.mapouter{position:relative;text-align:right;height:400px;width:305px;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:305px;}</style></div>",
                     URLEncoder.encode(query, charset));
             
@@ -105,7 +106,7 @@ public class LocationInputViewController implements Initializable {
     }
     
     /**
-     * Uses the nominatim API open geocoding service to generate a Location
+     * Uses the nominatim API open geocoding service to generate a Location.
      * @param locationQuery 
      */
     private CoordinateLocation connectToLocationAPI(String locationQuery){
@@ -116,6 +117,7 @@ public class LocationInputViewController implements Initializable {
         
         StringBuilder coords = new StringBuilder();
         try {
+            //formats a user query with a URLEncoder.
             String query = String.format("q=%s", URLEncoder.encode(locationQuery, charset));
             URL url = new URL(host + query + ending);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -124,6 +126,7 @@ public class LocationInputViewController implements Initializable {
             
             int status = con.getResponseCode();
             
+            //attempt to read the response content.
             try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
@@ -148,7 +151,7 @@ public class LocationInputViewController implements Initializable {
         catch(IndexOutOfBoundsException e){
             alertLabel.setText("Location not found!");
             alertLabel.setVisible(true);
-            return this.resultingLocation;
+            return this.resultingLocation; //ensures that a CoordinateLocation is kept even if the query fails.
         }
         CoordinateLocation result = new CoordinateLocation();
         result.updateLocation(lat, lon);

@@ -8,7 +8,7 @@ package Model;
 import com.google.gson.Gson;
 
 /**
- *
+ * This model contains the definition of a CoordinateLocation.
  * @author jxw5883
  */
 public class CoordinateLocation extends Location {

@@ -26,8 +26,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface for viewing an article list.
+ * It loads every article and presents a list containing the title of every article.
  * @author jxw5883
  */
 public class ArticleMenuViewController implements Initializable {
@@ -105,6 +105,7 @@ public class ArticleMenuViewController implements Initializable {
     
     /**
      * Obtains the selected item in the ItemList, creates an ArticleDetailsView, passes an article to it, and switches to it.
+     * This function determines a selected item based off its title. 
      * @param event 
      * @throws java.io.IOException 
      */
@@ -122,6 +123,7 @@ public class ArticleMenuViewController implements Initializable {
             this.alertLabel.setVisible(true);
             return;
         }
+        //Switch to the ArticleDetailsView
         Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleDetailsView.fxml"));
         Parent root = fxmlLoader.load();

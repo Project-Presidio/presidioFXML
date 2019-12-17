@@ -28,8 +28,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface to input user details.
+ * The user is presented with a set of prompts to answer.
  * @author abp5300
  */
 public class PersonalDetailsViewController implements Initializable {
@@ -103,7 +103,8 @@ public class PersonalDetailsViewController implements Initializable {
     }
     
     /**
-     * Runs a series of checks on the input to verify the user has inputted all requested values and moves onto the next page if they have.
+     * Runs a series of checks on the input to verify user input.
+     * Moves onto the next page if input is valid.
      * @param event
      * @throws IOException 
      */

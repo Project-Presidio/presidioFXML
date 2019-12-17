@@ -9,13 +9,18 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- *
+ * This model class contains the definition of a Coordinate.
  * @author jxw5883
  */
 public class Coordinate {
     private double longitude;
     private double latitude;
 
+    /**
+     * Initializes a coordinate with lattitude and longitude (in that order).
+     * @param lattitude
+     * @param longitude 
+     */
     public Coordinate(double lattitude, double longitude) {
         this.latitude = lattitude;
         this.longitude = longitude;

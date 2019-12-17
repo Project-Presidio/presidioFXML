@@ -19,8 +19,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface for a menu.
+ * This allows a user to select between multiple use cases. 
  * @author jxw5883
  */
 public class MenuUIController implements Initializable {
@@ -29,11 +29,17 @@ public class MenuUIController implements Initializable {
     
     private Civilian civilian;
     
-    
+    /**
+     * Implements the Singleton Pattern.
+     * @return MenuUIController
+     */
     public static MenuUIController getInstance(){
         return INSTANCE;
     }
     
+    /**
+     * Switch to the AlertView (not yet implemented).
+     */
     @FXML
     private void goToAlertView(){
         System.out.println("Hit Alert Button.");
@@ -101,8 +107,6 @@ public class MenuUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
     }    
 
     /**

@@ -12,11 +12,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * The main class. This is the starting point of the app.
  * @author jxw5883
  */
 public class PresidioFXML extends Application {
     
+    /**
+     * Creates an instance of the LocationInputView and passes control to it.
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("PersonalDetailsView.fxml"));

@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 /**
- *
+ * This model class contains the structure of an Article.
  * @author jxw5883
  */
 public class Article {
@@ -18,6 +18,11 @@ public class Article {
     private final String title;
     private final String content;
 
+    /**
+     * Initializes an Article with an id and its content, and runs extractTitle() to obtain a title.
+     * @param id
+     * @param content 
+     */
     public Article(int id, String content) {
         this.id = id;
         this.content = content;
@@ -49,7 +54,7 @@ public class Article {
     }
     
     /**
-     * Returns the title of the Article
+     * Returns the title of the Article.
      * @return the title
      */
     @Override

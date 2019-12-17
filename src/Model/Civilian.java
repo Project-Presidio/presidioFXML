@@ -10,7 +10,8 @@ import com.google.gson.GsonBuilder;
 import java.time.LocalDate;
 
 /**
- *
+ * This model class contains the definition of a Civilian.
+ * TODO: Remove unused CoordinateLocation.
  * @author jxw5883
  */
 public class Civilian implements Reportable {
@@ -24,7 +25,7 @@ public class Civilian implements Reportable {
     private final CoordinateLocation location;
 
     /**
-     *
+     * Initializes a Civilian with all of its details. 
      * @param fullname
      * @param birthday
      * @param sex

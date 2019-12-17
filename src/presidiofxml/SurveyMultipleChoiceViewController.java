@@ -30,8 +30,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
+ * This controller class controls a user interface to answer questions.
+ * The Survey questions are pulled from a question.json file and setup in this controller.
  * @author jxw5883
  */
 public class SurveyMultipleChoiceViewController implements Initializable {
@@ -66,7 +66,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     private static final String QUESTION_FILE_LOCATION = "question.json";
     
     /**
-     * Generates the questionList and updates the View to reflect that.
+     * Generates the questionList and updates the View to reflect the update.
      */
     public void setup(){
         readQuestionFile();
@@ -115,12 +115,13 @@ public class SurveyMultipleChoiceViewController implements Initializable {
      */
     @FXML
     private void moveOntoNextQuestion(ActionEvent event) throws IOException, InterruptedException{
+        //determine which radiobutton was selected
         int selected;
         for(selected = 0; selected<radioButtons.length; selected++){
             if(radioButtons[selected].isSelected())
                 break;
         }
-        
+        //determines the question redirect values
         int nextQuestionNum = 0;
         switch(selected){
             case 0: nextQuestionNum = currentQuestion.getRedirect().get("a"); break;
@@ -129,10 +130,12 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             case 3: nextQuestionNum = currentQuestion.getRedirect().get("d"); break;
             case 4: nextQuestionNum = currentQuestion.getRedirect().get("e"); break;
             case 5: nextQuestionNum = currentQuestion.getRedirect().get("f"); break;
-            case 6: this.alertLabel.setVisible(true); return;
+            case 6: this.alertLabel.setVisible(true); return; //if a user does not select an item, pop up an alert
             default: System.err.println("An invalid question redirect was selected! The question selected was: " + selected);
         }
         
+        //Question redirects are always >=0.
+        //If the redirect is to a question, initialize a new instance of the SurveyMultipleChoiceView with the next question.
         if(nextQuestionNum >= 0){
             setCurrentQuestion(this.questionList.getQuestion(nextQuestionNum));
             Stage existingStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -140,6 +143,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             Parent root = fxmlLoader.load();
             SurveyMultipleChoiceViewController controller = fxmlLoader.getController();
             
+            //Give the new controller all the old content.
             controller.setQuestionList(questionList);
             controller.setCurrentQuestion(currentQuestion);
             controller.setQuestionNumber(questionNumber+1);
@@ -149,9 +153,11 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             existingStage.setScene(scene);
             existingStage.show();
         }
+        //Article redirects are always <0.
         //Tries to find an article to use, returns if it can't find one. 
         else{
-            //Optimization potential: figure out another way to load the article list and search for a specific article.
+            //Loads the entire article list and searches for a specific article.
+            //Optimization potential: figure out a faster way to do this.
             ArticleList articleList = new ArticleList().loadArticles();
             Article result = null;
             for(Article a: articleList.getArticleList()){
@@ -161,7 +167,7 @@ public class SurveyMultipleChoiceViewController implements Initializable {
                 }
             }
             if(result == null){
-                System.err.println("Article doesn't exist!");
+                System.err.println("Article was not found!");
                 return;
             }
             
@@ -169,11 +175,11 @@ public class SurveyMultipleChoiceViewController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ArticleDetailsView.fxml"));
             Parent root = fxmlLoader.load();
             ArticleDetailsViewController controller = fxmlLoader.getController();
-            controller.setArticle(result);
+            controller.setArticle(result); //give the ArticleDetailsViewController the next article to load.
             Scene scene = new Scene(root);
             existingStage.setScene(scene);
             existingStage.show();
-            return;
+            return; //do not continue on
         }
         
         this.questionNumber++;
@@ -183,16 +189,18 @@ public class SurveyMultipleChoiceViewController implements Initializable {
     
     /**
      * Opens a Json file containing a serialized QuestionList and loads it into questionList.
+     * This is only done this first time the SurveyMultipleChoiceView is loaded.
      */
     private void readQuestionFile(){
         String file = "";
         try {
+            //Read the contents of the Question File into the "st" variable.
             BufferedReader br = new BufferedReader(new FileReader(QUESTION_FILE_LOCATION));
             String st;
             while((st = br.readLine()) != null){
                 file += st;
             }
-            
+            //initialize the QuestionList
             this.setQuestionList(QuestionList.importJSON(file));
             setCurrentQuestion((Question) this.questionList.getQuestionList().get("0"));
         } catch (IOException ex) {

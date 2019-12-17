@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 /**
  * The main class. This is the starting point of the app.
+ * The github repo for this project can be found at: https://github.com/Project-Presidio/presidioFXML
  * @author jxw5883
  */
 public class PresidioFXML extends Application {
